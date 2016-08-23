@@ -11,7 +11,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
   <md-toolbar>
     <div id="header">
       <div class="left">
-        <img src="public/assets/images/angularhh.png">
+        <img src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angularhh.png">
         <h1 class="name">
           <a routerLink="/news/1" routerLinkActive="active">Angular 2 HN</a>
         </h1>
