@@ -22,10 +22,6 @@ const packages: any = {
     defaultExtension: 'js',
     main: 'progress-bar.js'
   },
-  '@angular2-material/progress-circle': {
-    defaultExtension: 'js',
-    main: 'progress-circle.js'
-  },
   'angular2-moment/src': {
     defaultExtension: 'js',
     main: 'index.js'
