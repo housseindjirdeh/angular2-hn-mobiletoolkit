@@ -22,7 +22,7 @@ export interface Item {
       </p>
     <ol class="post-list" start="{{ indexFrom + 1 }}">
       <li *ngFor="let item of items$ | async | slice:indexFrom:indexFrom + 30" class="post">
-        <item itemID="{{ item }}"></item>
+        <item class="item-block" itemID="{{ item }}"></item>
       </li>
     </ol>
     <div class="nav">
@@ -74,6 +74,10 @@ export interface Item {
     .post {
       padding: 0 0 7px 5px;
       transition: background-color 0.2s ease;
+    }
+
+    .item-block {
+      display: block;
     }
 
     .post .itemNum {
