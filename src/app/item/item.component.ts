@@ -28,31 +28,31 @@ export interface Item {
   </div>
   <div *ngIf="item$">
     <p *ngIf="item$.url"> 
-      <a class="title" href="{{item$?.url}}" target="_blank">
-        {{item$?.title}}
+      <a class="title" href="{{item$.url}}" target="_blank">
+        {{item$.title}}
       </a>
       <span class="domain">{{shortenDomain(item$.url)}}</span>
     </p>
     <p *ngIf="!item$.url">
-      <a class="title" [routerLink]="['/item', item$?.id]" routerLinkActive="active">
-        {{item$?.title}}
+      <a class="title" [routerLink]="['/item', item$.id]" routerLinkActive="active">
+        {{item$.title}}
       </a>
     </p>
     <div class="subtext">
-      <span *ngIf="item$?.type !== 'job'">
-        {{item$?.score}} points by 
-        <a [routerLink]="['/user', item$?.by]" routerLinkActive="active">{{item$?.by}}</a>
+      <span *ngIf="item$.type !== 'job'">
+        {{item$.score}} points by 
+        <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a>
       </span> 
-      <span [class.item-details]="item$?.type !== 'job'">
-        {{ (item$?.time | amFromUnix) | amTimeAgo }}
-        <span *ngIf="item$?.type !== 'job'"> |
-          <a [routerLink]="['/item', item$?.id]" routerLinkActive="active">
-            <span *ngIf="item$?.descendants !== 0">
-                {{item$?.descendants}}
-                <span *ngIf="item$?.descendants === 1">comment</span>
-                <span *ngIf="item$?.descendants > 1">comments</span>
+      <span [class.item-details]="item$.type !== 'job'">
+        {{ (item$.time | amFromUnix) | amTimeAgo }}
+        <span *ngIf="item$.type !== 'job'"> |
+          <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
+            <span *ngIf="item$.descendants !== 0">
+                {{item$.descendants}}
+                <span *ngIf="item$.descendants === 1">comment</span>
+                <span *ngIf="item$.descendants > 1">comments</span>
               </span>
-            <span *ngIf="item$?.descendants === 0">discuss</span>
+            <span *ngIf="item$.descendants === 0">discuss</span>
           </a>
         </span>
       </span> 

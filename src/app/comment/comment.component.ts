@@ -36,14 +36,14 @@ export interface Comment {
     <div *ngIf="!comment$.deleted">
       <div class="meta" [class.meta-collapse]="collapse">
         <span class="collapse" (click)="collapse = !collapse">[{{collapse ? '+' : '-'}}]</span> 
-        <a [routerLink]="['/user', comment$?.by]" routerLinkActive="active">{{comment$?.by}}</a> 
-        {{ (comment$?.time | amFromUnix) | amTimeAgo }}
+        <a [routerLink]="['/user', comment$.by]" routerLinkActive="active">{{comment$.by}}</a> 
+        {{ (comment$.time | amFromUnix) | amTimeAgo }}
       </div>
       <div class="comment-tree">
         <div [hidden]="collapse">
-          <p class="comment-text" [innerHTML]="comment$?.text"></p>
+          <p class="comment-text" [innerHTML]="comment$.text"></p>
           <p><a class="reply" href="https://news.ycombinator.com/reply?id={{comment$.id}}">reply</a></p>
-          <div class="subtree" *ngFor="let kidId of comment$?.kids">
+          <div class="subtree" *ngFor="let kidId of comment$.kids">
             <app-comment commentID="{{ kidId }}"></app-comment>
           </div>
         </div>

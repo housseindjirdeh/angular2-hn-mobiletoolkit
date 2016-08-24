@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 import { FromUnixPipe, TimeAgoPipe } from 'angular2-moment/src';
+import { Title } from '@angular/platform-browser';
 
 import CommentTreeComponent from '../comment-tree/comment-tree.component';
 
@@ -27,45 +28,45 @@ export interface Item {
     ...
   </div>
   <div *ngIf="item$" class="item">
-    <div [class.item-header]="item$?.descendants !== 0 && item$?.type !== 'job'" [class.head-margin]="item$?.text">
+    <div [class.item-header]="item$.descendants !== 0 && item$.type !== 'job'" [class.head-margin]="item$.text">
       <p *ngIf="item$.url">
-        <a class="title" href="{{item$?.url}}" target="_blank">
-        {{item$?.title}}
+        <a class="title" href="{{item$.url}}" target="_blank">
+        {{item$.title}}
         </a>
         <span class="domain">{{shortenDomain(item$.url)}}</span>
       </p>
       <p *ngIf="!item$.url">
-        <a class="title" [routerLink]="['/item', item$?.id]" routerLinkActive="active">
-        {{item$?.title}}
+        <a class="title" [routerLink]="['/item', item$.id]" routerLinkActive="active">
+        {{item$.title}}
         </a>
         <span class="domain">{{shortenDomain(item$.url)}}</span>
       </p>
       <div class="subtext">
-        <span *ngIf="item$?.type !== 'job'">
-        {{item$?.score}} points by 
-          <a [routerLink]="['/user', item$?.by]" routerLinkActive="active">{{item$?.by}}</a>
+        <span *ngIf="item$.type !== 'job'">
+        {{item$.score}} points by 
+          <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a>
         </span> 
-        <span [class.item-details]="item$?.type !== 'job'">
-          {{ (item$?.time | amFromUnix) | amTimeAgo }}
-          <span *ngIf="item$?.type !== 'job'"> |
-            <a [routerLink]="['/item', item$?.id]" routerLinkActive="active">
-              <span *ngIf="item$?.descendants !== 0">
-                {{item$?.descendants}}
-                <span *ngIf="item$?.descendants === 1">comment</span>
-                <span *ngIf="item$?.descendants > 1">comments</span>
+        <span [class.item-details]="item$.type !== 'job'">
+          {{ (item$.time | amFromUnix) | amTimeAgo }}
+          <span *ngIf="item$.type !== 'job'"> |
+            <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
+              <span *ngIf="item$.descendants !== 0">
+                {{item$.descendants}}
+                <span *ngIf="item$.descendants === 1">comment</span>
+                <span *ngIf="item$.descendants > 1">comments</span>
               </span>
-              <span *ngIf="item$?.descendants === 0">discuss</span>
+              <span *ngIf="item$.descendants === 0">discuss</span>
             </a>
           </span>
         </span> 
       </div>
     </div>
-    <p [innerHTML]="item$?.text"></p>
-    <app-comment-tree itemKids="{{ item$?.kids }}"></app-comment-tree>
+    <p [innerHTML]="item$.text"></p>
+    <app-comment-tree itemKids="{{ item$.kids }}"></app-comment-tree>
   </div>
   `,
   pipes: [FromUnixPipe, TimeAgoPipe],
-  providers: [HackerNewsAPIService],
+  providers: [HackerNewsAPIService, Title],
   styles: [`
     .item {
       box-sizing: border-box;
@@ -150,13 +151,18 @@ export default class ItemCommentsComponent implements OnInit {
   private sub: any;
   item$: Observable<Item>; 
 
-  constructor(private _hackerNewsAPIService: HackerNewsAPIService, private route: ActivatedRoute) {}
+  constructor(
+    private _hackerNewsAPIService: HackerNewsAPIService,
+    private route: ActivatedRoute,
+    private titleService: Title) 
+  {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let itemID = +params['id']; // (+) converts string 'id' to a number
       this._hackerNewsAPIService.fetchItem(itemID).subscribe(data => {
         this.item$ = data;
+        this.titleService.setTitle(data.title + ' | Angular 2 HN');
       }, error => console.log('Could not load item'));
     });
   }

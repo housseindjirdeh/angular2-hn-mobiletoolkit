@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
+import { FromUnixPipe, TimeAgoPipe } from 'angular2-moment/src';
+import { Title } from '@angular/platform-browser';
 
 import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
@@ -23,22 +25,19 @@ export interface User {
   <div *ngIf="user$" class="profile">
     <div class="main-details">
       <span class="name">{{ user$.id }}</span>
-      <span class="age">{{ timeAgo(user$.created) }}</span>
       <span class="right">{{ user$.karma }} ★</span>
+      <p class="age">Created {{ (user$.created | amFromUnix) | amTimeAgo }}</p>
     </div>
     <div class="other-details" *ngIf="user$.about">
       <p [innerHTML]="user$.about"></p>
     </div>
   </div>
    `,
-  providers: [HackerNewsAPIService],
+  pipes: [FromUnixPipe, TimeAgoPipe],
+  providers: [HackerNewsAPIService, Title],
   styles: [`
     .profile {
       padding: 30px;
-    }
-
-    .main-details {
-      padding-bottom: 10px;
     }
 
     .main-details .name {
@@ -48,9 +47,17 @@ export interface User {
       letter-spacing: 2px;
     }
 
+
+    @media screen and (max-width: 768px) {
+      .main-details .name {
+        font-size: 18px;
+      }
+    }
+
     .main-details .age {
       font-weight: bold;
       color: #828282;
+      padding-bottom: 0;
     }
 
     .main-details .right {
@@ -61,8 +68,14 @@ export interface User {
       letter-spacing: 2px;
     }
 
+    @media screen and (max-width: 768px) {
+      .main-details .right {
+        font-size: 18px;
+      }
+    }
+
     .other-details {
-      padding-top: 10px;
+      word-wrap: break-word;
     }
   `]
 })
@@ -71,43 +84,19 @@ export default class UserComponent {
   private sub: any;
   user$: Observable<User>; 
 
-  constructor(private _hackerNewsAPIService: HackerNewsAPIService, private route: ActivatedRoute) {}
+  constructor(
+    private _hackerNewsAPIService: HackerNewsAPIService, 
+    private route: ActivatedRoute,
+    private titleService: Title
+  ) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       let userID = params['id'];
       this._hackerNewsAPIService.fetchUser(userID).subscribe(data => {
         this.user$ = data;
+        this.titleService.setTitle('Profile: ' + data.id + ' | Angular 2 HN');
       }, error => console.log('Could not load user'));
     });
-  }
-
-  timeAgo(unix) {
-    // Should use a pipe for this, but pipes seem to break the App Shell :(
-    let date = +new Date(unix*1000);
-    let seconds: number = Math.floor((+new Date() - date) / 1000);
-    let interval: number = Math.floor(seconds / 31536000);
-
-    if (interval > 1) {
-        return interval + ' years old';
-    }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return interval + ' months old';
-    }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return interval + ' days old';
-    }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return interval + ' hours old';
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return interval + ' minutes old';
-    }
-    
-    return 'a few seconds old';
   }
 }
