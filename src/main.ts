@@ -7,8 +7,6 @@ import { AppComponent, environment } from './app/';
 import { APP_SHELL_RUNTIME_PROVIDERS } from '@angular/app-shell';
 import { HackerNewsAPIService } from './app/services/hackernews-api.service';
 
-if (environment.production) {
-  enableProdMode();
-}
+enableProdMode();
 
 bootstrap(AppComponent, [HackerNewsAPIService, APP_SHELL_RUNTIME_PROVIDERS, HTTP_PROVIDERS, appRouterProviders]);
