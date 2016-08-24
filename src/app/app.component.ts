@@ -32,7 +32,7 @@ import FooterComponent from './footer/footer.component';
       height: 100%;
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 768px) {
       #wrapper {
           width: 100%;
       }

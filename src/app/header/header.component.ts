@@ -10,34 +10,46 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
   template: `
   <md-toolbar>
     <div id="header">
-      <div class="left">
-        <img src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angularhh.png">
-        <h1 class="name">
-          <a routerLink="/news/1" routerLinkActive="active">Angular 2 HN</a>
-        </h1>
-        <span class="header-nav">
-          <a routerLink="/newest/1" routerLinkActive="active">new</a>
-          <span class="divider">
-            |
+      <img class="logo" src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angular2-hn.png">
+      <div class="header-text">
+        <div class="left">
+          <h1 class="name">
+            <a routerLink="/news/1" routerLinkActive="active">Angular 2 HN</a>
+          </h1>
+          <span class="header-nav">
+            <a routerLink="/newest/1" routerLinkActive="active">new</a>
+            <span class="divider">
+              |
+            </span>
+            <a routerLink="/show/1" routerLinkActive="active">show</a>
+            <span class="divider">
+              |
+            </span>
+            <a routerLink="/ask/1" routerLinkActive="active">ask</a>
+            <span class="divider">
+              |
+            </span>
+            <a routerLink="/jobs/1" routerLinkActive="active">jobs</a>
           </span>
-          <a routerLink="/show/1" routerLinkActive="active">show</a>
-          <span class="divider">
-            |
-          </span>
-          <a routerLink="/ask/1" routerLinkActive="active">ask</a>
-          <span class="divider">
-            |
-          </span>
-          <a routerLink="/jobs/1" routerLinkActive="active">jobs</a>
-        </span>
-      </div>
-      <div class="info">
-        Built with <a href="https://mobile.angular.io/" target="_blank">Angular Mobile Toolkit</a>
+        </div>
+        <div class="info">
+          Built with <a href="https://mobile.angular.io/" target="_blank">Angular Mobile Toolkit</a>
+        </div>
       </div>
     </div>
   </md-toolbar>
    `,
   styles: [`
+    .logo {
+      width: 50px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .logo {
+        display: none;
+      }
+    }
+
     md-toolbar {
       background-color: rgb(177, 49, 56);
       color: #fff;
@@ -70,6 +82,10 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     }
 
     #header {
+      width: inherit;
+    }
+
+    .header-text {
       position: absolute;
       width: inherit;
       height: 20px;
@@ -79,13 +95,14 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     .left {
       position: absolute;
-      left: 10px;
+      left: 60px;
       font-size: 16px;
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 768px) {
      .left {
         width: 100%;
+        left: 10px;
       }
     }
 
@@ -102,7 +119,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       font-weight: bold;
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 768px) {
       .header-nav {
         float: right;
         margin-right: 20px;
@@ -121,7 +138,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       text-decoration: none;
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 768px) {
       .info {
         display: none;
       }

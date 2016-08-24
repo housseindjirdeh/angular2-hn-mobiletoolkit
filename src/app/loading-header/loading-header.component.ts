@@ -7,19 +7,32 @@ import { MdToolbar } from '@angular2-material/toolbar';
   template: `
   <md-toolbar>
     <div id="header">
-      <div class="left">
-        <h1 class="name">
-          <a href="/">Angular 2 HN</a>
-        </h1>
-      </div>
-      <div class="info">
-        Built with <a href="https://mobile.angular.io/" target="_blank">Angular Mobile Toolkit</a>
+      <img class="logo" src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angular2-hn.png">
+      <div class="header-text">
+        <div class="left">
+          <h1 class="name">
+            <a href="/">Angular 2 HN</a>
+          </h1>
+        </div>
+        <div class="info">
+          Built with <a href="https://mobile.angular.io/" target="_blank">Angular Mobile Toolkit</a>
+        </div>
       </div>
     </div>
   </md-toolbar>
    `,
   styles: [`
-   md-toolbar {
+      .logo {
+      width: 50px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .logo {
+        display: none;
+      }
+    }
+
+    md-toolbar {
       background-color: rgb(177, 49, 56);
       color: #fff;
       padding: 6px;
@@ -51,6 +64,10 @@ import { MdToolbar } from '@angular2-material/toolbar';
     }
 
     #header {
+      width: inherit;
+    }
+
+    .header-text {
       position: absolute;
       width: inherit;
       height: 20px;
@@ -60,8 +77,15 @@ import { MdToolbar } from '@angular2-material/toolbar';
 
     .left {
       position: absolute;
-      left: 10px;
+      left: 60px;
       font-size: 16px;
+    }
+
+    @media screen and (max-width: 768px) {
+     .left {
+        width: 100%;
+        left: 10px;
+      }
     }
 
     .header-nav {
@@ -82,7 +106,7 @@ import { MdToolbar } from '@angular2-material/toolbar';
       text-decoration: none;
     }
 
-    @media screen and (max-width: 700px) {
+    @media screen and (max-width: 768px) {
       .info {
         display: none;
       }
