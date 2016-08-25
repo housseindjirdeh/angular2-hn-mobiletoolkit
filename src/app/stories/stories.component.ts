@@ -55,6 +55,13 @@ export interface Item {
       margin: 0;
     }
 
+    @media screen and (max-width: 768px) {
+      ol {
+        box-sizing: border-box;
+        margin-top: 70px;
+      }
+    }
+
     li {
       position: relative;
       -webkit-transition: background-color .2s ease;
@@ -63,12 +70,12 @@ export interface Item {
 
     .main-content {
       position: relative;
-      background-color: #f6f6ef;
       width: 100%;
       -webkit-transition: opacity .2s ease;
       transition: opacity .2s ease;
       box-sizing: border-box;
       padding: 8px 0;
+      z-index: 0;
     }
 
     .post {

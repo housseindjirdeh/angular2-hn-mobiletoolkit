@@ -58,6 +58,21 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       vertical-align: middle;
       position: relative;
       border-radius: 7px;
+      z-index: 1;
+    }
+
+    @media screen and (max-width: 768px) {
+      md-toolbar {
+        background-color: rgb(177, 49, 56);
+        color: #fff;
+        padding: 6px;
+        height: 34px;
+        border-radius: 0;
+        line-height: 18px;
+        vertical-align: middle;
+        position: fixed;
+        width: 100%;
+      }
     }
 
     h1 {
@@ -91,6 +106,12 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       height: 20px;
       left: 0;
       top: 28px;
+    }
+
+    @media screen and (max-width: 768px) {
+     .header-text {
+        top: 23px;
+      }
     }
 
     .left {

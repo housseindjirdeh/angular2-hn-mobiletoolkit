@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { APP_SHELL_DIRECTIVES } from '@angular/app-shell';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
@@ -11,6 +11,7 @@ import FooterComponent from './footer/footer.component';
 @Component({
   moduleId: module.id,
   selector: 'app-root',
+  encapsulation: ViewEncapsulation.None,
   template: `
     <div id="wrapper">
       <app-loading-header *shellRender></app-loading-header>
@@ -33,6 +34,10 @@ import FooterComponent from './footer/footer.component';
     }
 
     @media screen and (max-width: 768px) {
+      body {
+        margin: 0;
+      }
+
       #wrapper {
           width: 100%;
       }

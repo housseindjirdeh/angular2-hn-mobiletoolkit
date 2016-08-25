@@ -62,7 +62,7 @@ export interface Item {
       </div>
     </div>
     <p [innerHTML]="item$.text"></p>
-    <app-comment-tree itemKids="{{ item$.kids }}"></app-comment-tree>
+    <app-comment-tree itemKids="{{ item$.kids }}" itemCount="{{ item$.descendants }}"></app-comment-tree>
   </div>
   `,
   pipes: [FromUnixPipe, TimeAgoPipe],
@@ -71,11 +71,11 @@ export interface Item {
     .item {
       box-sizing: border-box;
       padding: 10px 40px 0 40px;
+      z-index: 0;
     }
 
     @media screen and (max-width: 1024px) {
       .item {
-        box-sizing: border-box;
         padding: 10px 20px 0 40px;
       }
     }
@@ -83,7 +83,7 @@ export interface Item {
     @media screen and (max-width: 768px) {
       .item {
         box-sizing: border-box;
-        padding: 10px 10px 0 20px;
+        padding: 75px 10px 0 20px;
       }
     }
 

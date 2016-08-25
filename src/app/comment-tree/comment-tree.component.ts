@@ -56,16 +56,30 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
 export default class CommentTreeComponent implements OnInit {
   @Input() itemKids: string;
+  @Input() itemCount: number;
   indexFrom: number;
+  indexChange: number;
 
   constructor(private _hackerNewsAPIService: HackerNewsAPIService) {}
 
   ngOnInit() {
     this.itemKids = JSON.parse("[" + this.itemKids + "]");
-    this.indexFrom = 8;
+
+    if (this.itemCount <= 50) {
+      this.indexChange = 10;
+    } else if (this.itemCount <= 100) {
+      this.indexChange = 7;
+    } else if (this.itemCount <= 150) {
+      this.indexChange = 5;
+    } else {
+      this.indexChange = 3;
+    }
+
+    console.log(this.indexChange);
+    this.indexFrom = this.indexChange;
   }
 
   loadMore() {
-    this.indexFrom += 8;
+    this.indexFrom += this.indexChange;
   }
 }
