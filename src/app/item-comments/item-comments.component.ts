@@ -1,0 +1,177 @@
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
+import { FromUnixPipe, TimeAgoPipe } from 'angular2-moment/src';
+import { Title } from '@angular/platform-browser';
+
+import CommentTreeComponent from '../comment-tree/comment-tree.component';
+
+import { HackerNewsAPIService } from '../services/hackernews-api.service';
+
+export interface Item {
+  by: string;
+  descendants: number;
+  id: number;
+  kids: number[];
+  score: number;
+  time: Date;
+  title: string;
+  type: string;
+  url: string;
+}
+
+@Component({
+  moduleId: module.id,
+  selector: 'app-item-comments',
+  template: `
+  <div *ngIf="!item$">
+    ...
+  </div>
+  <div *ngIf="item$" class="item">
+    <div [class.item-header]="item$.descendants !== 0 && item$.type !== 'job'" [class.head-margin]="item$.text">
+      <p *ngIf="item$.url">
+        <a class="title" href="{{item$.url}}" target="_blank">
+        {{item$.title}}
+        </a>
+        <span class="domain">{{shortenDomain(item$.url)}}</span>
+      </p>
+      <p *ngIf="!item$.url">
+        <a class="title" [routerLink]="['/item', item$.id]" routerLinkActive="active">
+        {{item$.title}}
+        </a>
+        <span class="domain">{{shortenDomain(item$.url)}}</span>
+      </p>
+      <div class="subtext">
+        <span *ngIf="item$.type !== 'job'">
+        {{item$.score}} points by 
+          <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a>
+        </span> 
+        <span [class.item-details]="item$.type !== 'job'">
+          {{ (item$.time | amFromUnix) | amTimeAgo }}
+          <span *ngIf="item$.type !== 'job'"> |
+            <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
+              <span *ngIf="item$.descendants !== 0">
+                {{item$.descendants}}
+                <span *ngIf="item$.descendants === 1">comment</span>
+                <span *ngIf="item$.descendants > 1">comments</span>
+              </span>
+              <span *ngIf="item$.descendants === 0">discuss</span>
+            </a>
+          </span>
+        </span> 
+      </div>
+    </div>
+    <p [innerHTML]="item$.text"></p>
+    <app-comment-tree itemKids="{{ item$.kids }}"></app-comment-tree>
+  </div>
+  `,
+  pipes: [FromUnixPipe, TimeAgoPipe],
+  providers: [HackerNewsAPIService, Title],
+  styles: [`
+    .item {
+      box-sizing: border-box;
+      padding: 10px 40px 0 40px;
+    }
+
+    @media screen and (max-width: 1024px) {
+      .item {
+        box-sizing: border-box;
+        padding: 10px 20px 0 40px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .item {
+        box-sizing: border-box;
+        padding: 10px 10px 0 20px;
+      }
+    }
+
+    .head-margin {
+      margin-bottom: 15px;
+    }
+
+    p {
+      margin: 2px 0;
+    }
+
+    a {
+      color: #000;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .title {
+      font-size: 16px;
+    }
+
+    .title:visited {
+      color: #828282;
+    }
+
+    .domain,
+    .subtext {
+      font-size: 12px;
+      color: #828282;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .domain a,
+    .subtext a {
+      color: #B13138;
+    }
+
+    .subtext a:hover {
+      text-decoration: underline;
+    }
+
+    .item-details {
+      padding: 10px;
+    }
+
+    .long {
+      margin: 18px 20px 0;
+      width: 20%;
+    }
+
+    .short {
+      margin: 8px 20px;
+      width: 10%;
+    }
+
+    .item-header {
+      border-bottom: 2px solid #B13138;
+      padding-bottom: 10px;
+    }
+  `],
+  directives: [CommentTreeComponent, ROUTER_DIRECTIVES]
+})
+export default class ItemCommentsComponent implements OnInit {
+  private sub: any;
+  item$: Observable<Item>; 
+
+  constructor(
+    private _hackerNewsAPIService: HackerNewsAPIService,
+    private route: ActivatedRoute,
+    private titleService: Title) 
+  {}
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      let itemID = +params['id']; // (+) converts string 'id' to a number
+      this._hackerNewsAPIService.fetchItem(itemID).subscribe(data => {
+        this.item$ = data;
+        this.titleService.setTitle(data.title + ' | Angular 2 HN');
+      }, error => console.log('Could not load item'));
+    });
+  }
+
+  shortenDomain(url) {
+    // Should use a pipe for this, but pipes seem to break the App Shell :(
+    if (url) {
+      var domain = '(' + url.split('/')[2] + ')';
+      return domain ? domain.replace('www.', '') : '';
+    }
+  }
+}
