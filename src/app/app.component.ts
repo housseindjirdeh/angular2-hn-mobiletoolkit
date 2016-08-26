@@ -33,6 +33,10 @@ import FooterComponent from './footer/footer.component';
       height: 100%;
     }
 
+    body {
+      margin-bottom: 0;
+    }
+
     @media screen and (max-width: 768px) {
       body {
         margin: 0;

@@ -19,9 +19,6 @@ export interface User {
   moduleId: module.id,
   selector: 'user',
   template:` 
-  <div *ngIf="!user$">
-    ...
-  </div>
   <div *ngIf="user$" class="profile">
     <div class="main-details">
       <span class="name">{{ user$.id }}</span>

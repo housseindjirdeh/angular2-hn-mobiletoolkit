@@ -14,22 +14,22 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       <div class="header-text">
         <div class="left">
           <h1 class="name">
-            <a routerLink="/news/1" routerLinkActive="active">Angular 2 HN</a>
+            <a routerLink="/news/1" routerLinkActive="active" (click)="scrollTop()">Angular 2 HN</a>
           </h1>
           <span class="header-nav">
-            <a routerLink="/newest/1" routerLinkActive="active">new</a>
+            <a routerLink="/newest/1" routerLinkActive="active" (click)="scrollTop()">new</a>
             <span class="divider">
               |
             </span>
-            <a routerLink="/show/1" routerLinkActive="active">show</a>
+            <a routerLink="/show/1" routerLinkActive="active" (click)="scrollTop()">show</a>
             <span class="divider">
               |
             </span>
-            <a routerLink="/ask/1" routerLinkActive="active">ask</a>
+            <a routerLink="/ask/1" routerLinkActive="active" (click)="scrollTop()">ask</a>
             <span class="divider">
               |
             </span>
-            <a routerLink="/jobs/1" routerLinkActive="active">jobs</a>
+            <a routerLink="/jobs/1" routerLinkActive="active" (click)="scrollTop()">jobs</a>
           </span>
         </div>
         <div class="info">
@@ -172,5 +172,9 @@ export default class HeaderComponent {
 
   getStories(storyType: string) {
     this._hackerNewsAPIService.fetchStories(storyType); // load all item ids
+  }
+
+  scrollTop() {
+    window.scrollTo(0, 0);
   }
 }

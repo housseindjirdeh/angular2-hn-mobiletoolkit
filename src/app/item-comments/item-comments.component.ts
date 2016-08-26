@@ -24,9 +24,6 @@ export interface Item {
   moduleId: module.id,
   selector: 'app-item-comments',
   template: `
-  <div *ngIf="!item$">
-    ...
-  </div>
   <div *ngIf="item$" class="item">
     <div [class.item-header]="item$.descendants !== 0 && item$.type !== 'job'" [class.head-margin]="item$.text">
       <p *ngIf="item$.url">

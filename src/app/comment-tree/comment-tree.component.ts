@@ -50,6 +50,10 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     .button:hover {
       background-color: #b8454b;
     }
+
+    button:focus {
+      outline:0;
+    }
   `],
   directives: [CommentComponent]
 })
@@ -75,7 +79,6 @@ export default class CommentTreeComponent implements OnInit {
       this.indexChange = 3;
     }
 
-    console.log(this.indexChange);
     this.indexFrom = this.indexChange;
   }
 

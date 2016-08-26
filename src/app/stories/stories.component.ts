@@ -58,7 +58,9 @@ export interface Item {
     @media screen and (max-width: 768px) {
       ol {
         box-sizing: border-box;
-        margin-top: 70px;
+        margin-top: 60px;
+        list-style: none;
+        padding: 0 10px;
       }
     }
 
@@ -71,6 +73,7 @@ export interface Item {
     .main-content {
       position: relative;
       width: 100%;
+      min-height: 100vh;
       -webkit-transition: opacity .2s ease;
       transition: opacity .2s ease;
       box-sizing: border-box;
@@ -81,6 +84,13 @@ export interface Item {
     .post {
       padding: 0 0 7px 5px;
       transition: background-color 0.2s ease;
+    }
+
+    @media screen and (max-width: 768px) {
+      .post {
+        padding: 10px 0 10px 5px;
+        border-bottom: 1px solid #CECECB;
+      }
     }
 
     .item-block {

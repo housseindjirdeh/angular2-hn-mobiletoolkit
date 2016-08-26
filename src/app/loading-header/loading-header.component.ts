@@ -42,6 +42,20 @@ import { MdToolbar } from '@angular2-material/toolbar';
       border-radius: 7px;
     }
 
+    @media screen and (max-width: 768px) {
+      md-toolbar {
+        background-color: rgb(177, 49, 56);
+        color: #fff;
+        padding: 6px;
+        height: 34px;
+        border-radius: 0;
+        line-height: 18px;
+        vertical-align: middle;
+        position: fixed;
+        width: 100%;
+      }
+    }
+
     h1 {
       font-weight: bold;
       display: inline-block;
@@ -75,6 +89,12 @@ import { MdToolbar } from '@angular2-material/toolbar';
       top: 28px;
     }
 
+    @media screen and (max-width: 768px) {
+     .header-text {
+        top: 23px;
+      }
+    }
+
     .left {
       position: absolute;
       left: 60px;
@@ -86,12 +106,6 @@ import { MdToolbar } from '@angular2-material/toolbar';
         width: 100%;
         left: 10px;
       }
-    }
-
-    .header-nav {
-      display: inline-block;
-      font-family: 'Open Sans', Verdana, sans-serif;
-      color: #fff;
     }
 
     .info {

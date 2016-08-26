@@ -38,7 +38,7 @@ export interface Item {
         {{item$.title}}
       </a>
     </p>
-    <div class="subtext">
+    <div class="subtext-laptop">
       <span *ngIf="item$.type !== 'job'">
         {{item$.score}} points by 
         <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a>
@@ -48,14 +48,30 @@ export interface Item {
         <span *ngIf="item$.type !== 'job'"> |
           <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
             <span *ngIf="item$.descendants !== 0">
-                {{item$.descendants}}
-                <span *ngIf="item$.descendants === 1">comment</span>
-                <span *ngIf="item$.descendants > 1">comments</span>
-              </span>
+              {{item$.descendants}}
+              <span *ngIf="item$.descendants === 1">comment</span>
+              <span *ngIf="item$.descendants > 1">comments</span>
+            </span>
             <span *ngIf="item$.descendants === 0">discuss</span>
           </a>
         </span>
       </span> 
+    </div>
+    <div class="subtext-palm">
+      <div class="details">▲{{item$.score}} by <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a></div>
+      <div class="details">
+      {{ (item$.time | amFromUnix) | amTimeAgo }}
+      <span *ngIf="item$.type !== 'job'"> • 
+        <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
+          <span *ngIf="item$.descendants !== 0">
+            {{item$.descendants}}
+            <span *ngIf="item$.descendants === 1">comment</span>
+            <span *ngIf="item$.descendants > 1">comments</span>
+          </span>
+          <span *ngIf="item$.descendants === 0">discuss</span>
+        </a>
+      </span>
+      </div>
     </div>
   </div>
    `,
@@ -64,6 +80,13 @@ export interface Item {
   styles: [`
     p {
       margin: 2px 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      p {
+        margin-bottom: 5px;
+        margin-top: 0;
+      }
     }
 
     a {
@@ -81,7 +104,7 @@ export interface Item {
     }
 
     .domain,
-    .subtext {
+    .subtext-laptop, .subtext-palm {
       font-size: 12px;
       color: #828282;
       font-weight: bold;
@@ -89,12 +112,30 @@ export interface Item {
     }
 
     .domain a,
-    .subtext a {
+    .subtext-laptop a,
+    .subtext-palm a {
       color: #B13138;
     }
 
-    .subtext a:hover {
+    .subtext-laptop a:hover,
+    .subtext-palm a:hover {
       text-decoration: underline;
+    }
+
+    .subtext-palm .details {
+      margin-top: 5px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .subtext-laptop {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 768px) {
+      .subtext-palm {
+        display: none;
+      }
     }
 
     .item-details {
@@ -112,8 +153,13 @@ export interface Item {
     }
 
     .loading-bars {
-      margin-top: -12px;
-      margin-left: -20px;
+      margin: -12px 0 0 -20px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .loading-bars {
+        margin: 15px 0 15px -20px;
+      }
     }
   `],
   directives: [MdProgressBar, ROUTER_DIRECTIVES]
