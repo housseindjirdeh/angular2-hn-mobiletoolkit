@@ -20,18 +20,6 @@ export interface Comment {
   moduleId: module.id,
   selector: 'app-comment',
   template:` 
-  <div class="loading-bars" *ngIf="!comment$">
-    <div class="meta" [class.meta-collapse]="collapse">
-      <span class="collapse">[-]</span> 
-      <a>-------------</a> 
-      X hours ago
-    </div>
-    <div class="bars-section">
-      <md-progress-bar mode="indeterminate" color="warn" class="short"></md-progress-bar>
-      <md-progress-bar mode="indeterminate" color="warn" class="long"></md-progress-bar>
-      <md-progress-bar mode="indeterminate" color="warn" class="short"></md-progress-bar>
-    </div>
-  </div>
   <div *ngIf="comment$">
     <div *ngIf="!comment$.deleted">
       <div class="meta" [class.meta-collapse]="collapse">
@@ -145,25 +133,6 @@ export interface Comment {
     .reply {
       text-decoration: underline;
       font-size: 13px;
-    }
-
-    .long {
-      margin: 8px 20px;
-      width: 40%;
-    }
-
-    .short {
-      margin: 8px 20px;
-      width: 30%;
-    }
-
-    .loading-bars {
-      margin-top: 30px;
-      margin-bottom: 40px;
-    }
-
-    .bars-section {
-      margin-top: 20px;
     }
   `],
   directives: [MdProgressBar, CommentComponent, ROUTER_DIRECTIVES]
