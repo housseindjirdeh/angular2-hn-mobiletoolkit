@@ -14,6 +14,7 @@
   <meta name="theme-color" content="#000000">
   <link rel="manifest" href="/manifest.webapp">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="loading-style.css" />
   {{#each mobile.icons}}
     <link rel="{{rel}}" {{#if sizes}}sizes="{{sizes}}" {{/if}}href="{{href}}">
   {{/each}}
@@ -30,24 +31,24 @@
   
 </head>
 <body>
-  <app-root>Loading...</app-root>
+  <app-root></app-root>
 
-  
+  <div class="app-loader">
+    <img class="logo" src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angular2-hn.png">
+  </div>
 
-    {{#if environment.production}}
-      <script src="/app-concat.js" async></script>
-    {{else}}
-      {{#each scripts.polyfills}}
-      <script src="{{.}}"></script>
-      {{/each}}
-      <script>
-        System.import('system-config.js').then(function () {
-          System.import('main');
-        }).catch(console.error.bind(console));
-      </script>
-    {{/if}}
-
-  
+  {{#if environment.production}}
+    <script src="/app-concat.js" async></script>
+  {{else}}
+    {{#each scripts.polyfills}}
+    <script src="{{.}}"></script>
+    {{/each}}
+    <script>
+      System.import('system-config.js').then(function () {
+        System.import('main');
+      }).catch(console.error.bind(console));
+    </script>
+  {{/if}}
 
 </body>
 </html>
