@@ -29,10 +29,10 @@ export interface Item {
       <a routerLink="/{{ storiesType }}/{{ pageNum - 1 }}" class="link" *ngIf="indexFrom > 0" (click)="scrollTop()">
         Prev
       </a>
-      <span class="divider" *ngIf="indexFrom > 0">
+      <span class="divider" *ngIf="indexFrom > 0 && (items$ | async)?.length > indexFrom + 30">
         |
       </span>
-      <a routerLink="/{{ storiesType }}/{{ pageNum + 1 }}" class="link" (click)="scrollTop()">
+      <a routerLink="/{{ storiesType }}/{{ pageNum + 1 }}" class="link" *ngIf="(items$ | async)?.length > indexFrom + 30" (click)="scrollTop()">
         More
       </a>
     <div>
