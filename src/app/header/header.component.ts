@@ -10,7 +10,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
   template: `
   <md-toolbar>
     <div id="header">
-      <img class="logo" src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angular2-hn.png">
+      <img class="logo" src="/assets/images/angular2-hn.png">
       <div class="header-text">
         <div class="left">
           <h1 class="name">

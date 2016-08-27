@@ -6,7 +6,7 @@ import { MdProgressBar } from '@angular2-material/progress-bar';
   selector: 'app-loading-screen',
   template: `
   <div class="loading-image">
-    <img class="logo" src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angular2-hn.png">
+    <img class="logo" src="/assets/images/angular2-hn.png">
   </div>
   `,
   styles: [`
