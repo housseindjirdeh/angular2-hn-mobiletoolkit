@@ -1,4 +1,6 @@
-<!DOCTYPE html><html><head>
+<!doctype html>
+<html>
+<head>
   <meta charset="utf-8">
   <title>Angular 2 Hacker News</title>
   <base href="/angular2-hn/">
@@ -9,6 +11,7 @@
   <meta name="theme-color" content="#000000">
   <link rel="manifest" href="/manifest.webapp">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="loading-style.css" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-touch-icon-60x60.png">
@@ -29,185 +32,15 @@
     }
   </script>
   
-<style>#wrapper[_ngcontent-bqe-1] {
-      background-color: #f6f6ef;
-      position: relative;
-      width: 85%;
-      min-height: 80px;
-      margin: 0 auto;
-      font-family: 'Open Sans', Verdana, sans-serif;
-      font-size: 15px;
-      height: 100%;
-    }
-
-    @media screen and (max-width: 768px) {
-      #wrapper[_ngcontent-bqe-1] {
-          width: 100%;
-      }
-    }</style><style>.footer[_ngcontent-bqe-2] {
-	  position: relative;
-	  padding: 10px;
-	  height: 90px;
-	  border-top: 2px solid #B13138;
-	  letter-spacing: 0.7px;
-	}
-
-	.footer[_ngcontent-bqe-2] a[_ngcontent-bqe-2] {
-	  color: #B13138;
-	  font-weight: bold;
-	  text-decoration: none;
-	}
-
-	.footer[_ngcontent-bqe-2] a[_ngcontent-bqe-2]:hover {
-	  text-decoration: underline;
-	}</style><style>.logo[_ngcontent-bqe-3] {
-      width: 50px;
-    }
-
-    @media screen and (max-width: 768px) {
-      .logo[_ngcontent-bqe-3] {
-        display: none;
-      }
-    }
-
-    md-toolbar[_ngcontent-bqe-3] {
-      background-color: rgb(177, 49, 56);
-      color: #fff;
-      padding: 6px;
-      line-height: 18px;
-      vertical-align: middle;
-      position: relative;
-      border-radius: 7px;
-    }
-
-    h1[_ngcontent-bqe-3] {
-      font-weight: bold;
-      display: inline-block;
-      vertical-align:middle;
-      margin: 0;
-      font-size: 16px;
-    }
-
-    h1[_ngcontent-bqe-3] a[_ngcontent-bqe-3] {
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .name[_ngcontent-bqe-3] {
-      margin-right: 30px;
-    }
-
-    p[_ngcontent-bqe-3] {
-      display: inline;
-    }
-
-    #header[_ngcontent-bqe-3] {
-      width: inherit;
-    }
-
-    .header-text[_ngcontent-bqe-3] {
-      position: absolute;
-      width: inherit;
-      height: 20px;
-      left: 0;
-      top: 28px;
-    }
-
-    .left[_ngcontent-bqe-3] {
-      position: absolute;
-      left: 60px;
-      font-size: 16px;
-    }
-
-    @media screen and (max-width: 768px) {
-     .left[_ngcontent-bqe-3] {
-        width: 100%;
-        left: 10px;
-      }
-    }
-
-    .header-nav[_ngcontent-bqe-3] {
-      display: inline-block;
-      font-family: 'Open Sans', Verdana, sans-serif;
-      color: #fff;
-    }
-
-    .info[_ngcontent-bqe-3] {
-      position: absolute;
-      right: 10px;
-      font-size: 16px;
-    }
-
-    .info[_ngcontent-bqe-3] a[_ngcontent-bqe-3] {
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    @media screen and (max-width: 768px) {
-      .info[_ngcontent-bqe-3] {
-        display: none;
-      }
-    }</style><style>/** * Mixin that creates a new stacking context. * see https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context */ /** * This mixin hides an element visually. * That means it's still accessible for screen-readers but not visible in view. */ /** * Forces an element to grow to fit floated contents; used as as an alternative to * `overflow: hidden;` because it doesn't cut off contents. */ /** * A mixin, which generates temporary ink ripple on a given component. * When $bindToParent is set to true, it will check for the focused class on the same selector as you included * that mixin. * It is also possible to specify the color palette of the temporary ripple. By default it uses the * accent palette for its background. */ md-toolbar { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; min-height: 64px; font-size: 20px; font-weight: 400; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 0 16px; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; background: whitesmoke; color: rgba(0, 0, 0, 0.87); } md-toolbar.md-primary { background: #009688; color: white; } md-toolbar.md-accent { background: #9c27b0; color: rgba(255, 255, 255, 0.870588); } md-toolbar.md-warn { background: #f44336; color: white; } md-toolbar md-toolbar-row { display: -webkit-box; display: -ms-flexbox; display: flex; box-sizing: border-box; width: 100%; height: 64px; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-align: center; -ms-flex-align: center; align-items: center; } </style><style>.content[_ngcontent-bqe-5] {
-      position: absolute;
-      top: 35vh;
-      width: 100%;
-    }
-
-    .loading-wrapper[_ngcontent-bqe-5] {
-      min-height: 70vh;
-      width: 100%;
-    }
-
-    h2[_ngcontent-bqe-5] {
-      text-align: center;
-      color: #B13138;
-    }</style><style>[_nghost-bqe-6] { display: block; height: 5px; overflow: hidden; position: relative; -webkit-transform: translateZ(0); transform: translateZ(0); -webkit-transition: opacity 250ms linear; transition: opacity 250ms linear; width: 100%;     } [_nghost-bqe-6] .md-progress-bar-background { background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27#b2dfdb%27%2F%3E%3C%2Fsvg%3E"); background-repeat: repeat-x; background-size: 10px 4px; height: 100%; position: absolute; visibility: hidden; width: 100%; } [_nghost-bqe-6] .md-progress-bar-buffer { background-color: #b2dfdb; height: 100%; position: absolute; -webkit-transform-origin: top left; transform-origin: top left; -webkit-transition: -webkit-transform 250ms ease; transition: -webkit-transform 250ms ease; transition: transform 250ms ease; transition: transform 250ms ease, -webkit-transform 250ms ease; width: 100%; } [_nghost-bqe-6] .md-progress-bar-secondary { visibility: hidden; } [_nghost-bqe-6] .md-progress-bar-fill { -webkit-animation: none; animation: none; height: 100%; position: absolute; -webkit-transform-origin: top left; transform-origin: top left; -webkit-transition: -webkit-transform 250ms ease; transition: -webkit-transform 250ms ease; transition: transform 250ms ease; transition: transform 250ms ease, -webkit-transform 250ms ease; width: 100%; } [_nghost-bqe-6] .md-progress-bar-fill::after { -webkit-animation: none; animation: none; background-color: #00897b; content: ''; display: inline-block; height: 100%; position: absolute; width: 100%; } [_nghost-bqe-6][color='accent'] .md-progress-bar-background { background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27#e1bee7%27%2F%3E%3C%2Fsvg%3E"); background-repeat: repeat-x; background-size: 10px 4px; } [_nghost-bqe-6][color='accent'] .md-progress-bar-buffer { background-color: #e1bee7; } [_nghost-bqe-6][color='accent'] .md-progress-bar-fill::after { background-color: #8e24aa; } [_nghost-bqe-6][color='warn'] .md-progress-bar-background { background: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20version%3D%271.1%27%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20xmlns%3Axlink%3D%27http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%27%20x%3D%270px%27%20y%3D%270px%27%20enable-background%3D%27new%200%200%205%202%27%20xml%3Aspace%3D%27preserve%27%20viewBox%3D%270%200%205%202%27%20preserveAspectRatio%3D%27none%20slice%27%3E%3Ccircle%20cx%3D%271%27%20cy%3D%271%27%20r%3D%271%27%20fill%3D%27#ffcdd2%27%2F%3E%3C%2Fsvg%3E"); background-repeat: repeat-x; background-size: 10px 4px; } [_nghost-bqe-6][color='warn'] .md-progress-bar-buffer { background-color: #ffcdd2; } [_nghost-bqe-6][color='warn'] .md-progress-bar-fill::after { background-color: #e53935; } [_nghost-bqe-6][mode='query'] { -webkit-transform: rotateZ(180deg); transform: rotateZ(180deg); } [_nghost-bqe-6][mode='indeterminate'] .md-progress-bar-fill, [_nghost-bqe-6][mode='query'] .md-progress-bar-fill { -webkit-transition: none; transition: none; } [_nghost-bqe-6][mode='indeterminate'] .md-progress-bar-primary, [_nghost-bqe-6][mode='query'] .md-progress-bar-primary { -webkit-animation: md-progress-bar-primary-indeterminate-translate 2000ms infinite linear; animation: md-progress-bar-primary-indeterminate-translate 2000ms infinite linear; left: -145.166611%; } [_nghost-bqe-6][mode='indeterminate'] .md-progress-bar-primary.md-progress-bar-fill::after, [_nghost-bqe-6][mode='query'] .md-progress-bar-primary.md-progress-bar-fill::after { -webkit-animation: md-progress-bar-primary-indeterminate-scale 2000ms infinite linear; animation: md-progress-bar-primary-indeterminate-scale 2000ms infinite linear; } [_nghost-bqe-6][mode='indeterminate'] .md-progress-bar-secondary, [_nghost-bqe-6][mode='query'] .md-progress-bar-secondary { -webkit-animation: md-progress-bar-secondary-indeterminate-translate 2000ms infinite linear; animation: md-progress-bar-secondary-indeterminate-translate 2000ms infinite linear; left: -54.888891%; visibility: visible; } [_nghost-bqe-6][mode='indeterminate'] .md-progress-bar-secondary.md-progress-bar-fill::after, [_nghost-bqe-6][mode='query'] .md-progress-bar-secondary.md-progress-bar-fill::after { -webkit-animation: md-progress-bar-secondary-indeterminate-scale 2000ms infinite linear; animation: md-progress-bar-secondary-indeterminate-scale 2000ms infinite linear; } [_nghost-bqe-6][mode='buffer'] .md-progress-bar-background { -webkit-animation: md-progress-bar-background-scroll 250ms infinite linear; animation: md-progress-bar-background-scroll 250ms infinite linear; visibility: visible; } [_nghost-bqe-6][dir='rtl'], [dir='rtl'] [_nghost-bqe-6] { -webkit-transform: rotateY(180deg); transform: rotateY(180deg); }   @-webkit-keyframes md-progress-bar-primary-indeterminate-translate { 0% { -webkit-transform: translateX(0); transform: translateX(0); } 20% { -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582); animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582); -webkit-transform: translateX(0); transform: translateX(0); } 59.15% { -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635); animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635); -webkit-transform: translateX(83.67142%); transform: translateX(83.67142%); } 100% { -webkit-transform: translateX(200.61106%); transform: translateX(200.61106%); } } @keyframes md-progress-bar-primary-indeterminate-translate { 0% { -webkit-transform: translateX(0); transform: translateX(0); } 20% { -webkit-animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582); animation-timing-function: cubic-bezier(0.5, 0, 0.70173, 0.49582); -webkit-transform: translateX(0); transform: translateX(0); } 59.15% { -webkit-animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635); animation-timing-function: cubic-bezier(0.30244, 0.38135, 0.55, 0.95635); -webkit-transform: translateX(83.67142%); transform: translateX(83.67142%); } 100% { -webkit-transform: translateX(200.61106%); transform: translateX(200.61106%); } } @-webkit-keyframes md-progress-bar-primary-indeterminate-scale { 0% { -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } 36.65% { -webkit-animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1); animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1); -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } 69.15% { -webkit-animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1); animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1); -webkit-transform: scaleX(0.66148); transform: scaleX(0.66148); } 100% { -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } } @keyframes md-progress-bar-primary-indeterminate-scale { 0% { -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } 36.65% { -webkit-animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1); animation-timing-function: cubic-bezier(0.33473, 0.12482, 0.78584, 1); -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } 69.15% { -webkit-animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1); animation-timing-function: cubic-bezier(0.06, 0.11, 0.6, 1); -webkit-transform: scaleX(0.66148); transform: scaleX(0.66148); } 100% { -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } } @-webkit-keyframes md-progress-bar-secondary-indeterminate-translate { 0% { -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); -webkit-transform: translateX(0); transform: translateX(0); } 25% { -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); -webkit-transform: translateX(37.65191%); transform: translateX(37.65191%); } 48.35% { -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); -webkit-transform: translateX(84.38617%); transform: translateX(84.38617%); } 100% { -webkit-transform: translateX(160.27778%); transform: translateX(160.27778%); } } @keyframes md-progress-bar-secondary-indeterminate-translate { 0% { -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); -webkit-transform: translateX(0); transform: translateX(0); } 25% { -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); -webkit-transform: translateX(37.65191%); transform: translateX(37.65191%); } 48.35% { -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); -webkit-transform: translateX(84.38617%); transform: translateX(84.38617%); } 100% { -webkit-transform: translateX(160.27778%); transform: translateX(160.27778%); } } @-webkit-keyframes md-progress-bar-secondary-indeterminate-scale { 0% { -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } 19.15% { -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); -webkit-transform: scaleX(0.4571); transform: scaleX(0.4571); } 44.15% { -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); -webkit-transform: scaleX(0.72796); transform: scaleX(0.72796); } 100% { -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } } @keyframes md-progress-bar-secondary-indeterminate-scale { 0% { -webkit-animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); animation-timing-function: cubic-bezier(0.15, 0, 0.51506, 0.40969); -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } 19.15% { -webkit-animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); animation-timing-function: cubic-bezier(0.31033, 0.28406, 0.8, 0.73371); -webkit-transform: scaleX(0.4571); transform: scaleX(0.4571); } 44.15% { -webkit-animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); animation-timing-function: cubic-bezier(0.4, 0.62704, 0.6, 0.90203); -webkit-transform: scaleX(0.72796); transform: scaleX(0.72796); } 100% { -webkit-transform: scaleX(0.08); transform: scaleX(0.08); } }  @-webkit-keyframes md-progress-bar-background-scroll { to { -webkit-transform: translateX(-10px); transform: translateX(-10px); } } @keyframes md-progress-bar-background-scroll { to { -webkit-transform: translateX(-10px); transform: translateX(-10px); } }</style></head>
+</head>
 <body>
-  <app-root _nghost-bqe-1="">
-    <div _ngcontent-bqe-1="" id="wrapper">
-      <!--template bindings={}--><app-loading-header _ngcontent-bqe-1="" _nghost-bqe-3="">
-  <md-toolbar _ngcontent-bqe-3=""><div class="md-toolbar-layout"> <md-toolbar-row> 
-    <div _ngcontent-bqe-3="" id="header">
-      <img _ngcontent-bqe-3="" class="logo" src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angular2-hn.png">
-      <div _ngcontent-bqe-3="" class="header-text">
-        <div _ngcontent-bqe-3="" class="left">
-          <h1 _ngcontent-bqe-3="" class="name">
-            <a _ngcontent-bqe-3="" href="/">Angular 2 HN</a>
-          </h1>
-        </div>
-        <div _ngcontent-bqe-3="" class="info">
-          Built with <a _ngcontent-bqe-3="" href="https://mobile.angular.io/" target="_blank">Angular Mobile Toolkit</a>
-        </div>
-      </div>
-    </div>
-   </md-toolbar-row>  </div></md-toolbar>
-   </app-loading-header>
-      <!--template bindings={}-->
-      <!--template bindings={}--><app-loading-indicator _ngcontent-bqe-1="" _nghost-bqe-5="">
-  <div _ngcontent-bqe-5="" class="loading-wrapper">
-    <div _ngcontent-bqe-5="" class="content">
-      <h2 _ngcontent-bqe-5="">Let's get ready to rumble</h2>
-      <md-progress-bar _ngcontent-bqe-5="" aria-valuemax="100" aria-valuemin="0" class="long" color="warn" mode="indeterminate" role="progressbar" _nghost-bqe-6="" ng-reflect-mode="indeterminate" aria-valuenow="0"> <div _ngcontent-bqe-6="" class="md-progress-bar-background"></div> <div _ngcontent-bqe-6="" class="md-progress-bar-buffer"></div> <div _ngcontent-bqe-6="" class="md-progress-bar-primary md-progress-bar-fill" ng-reflect-raw-style="[object Object]" style="transform:scaleX(0);"></div> <div _ngcontent-bqe-6="" class="md-progress-bar-secondary md-progress-bar-fill"></div> </md-progress-bar>
-    </div>
+  <app-root></app-root>
+
+  <div class="app-loader">
+    <img class="logo pulse" src="https://raw.githubusercontent.com/hdjirdeh/angular2-hackernews/master/public/assets/images/angular2-hn.png">
   </div>
-  </app-loading-indicator>
-      <!--template bindings={}-->
-      <app-footer _ngcontent-bqe-1="" _nghost-bqe-2="">
-   <center _ngcontent-bqe-2="" class="footer">
-    <p _ngcontent-bqe-2="">Show this project some ❤ on <a _ngcontent-bqe-2="" href="https://github.com/hdjirdeh/angular2-hn" target="_blank">GitHub</a></p>
-    <p _ngcontent-bqe-2="">Show me some ❤ on <a _ngcontent-bqe-2="" href="https://twitter.com/hdjirdeh" target="_blank">Twitter</a></p>
-  </center>
-  </app-footer>
-    </div>
-  </app-root>
 
-  
+    <script src="/app-concat.js" async></script>
 
-      <script src="/app-concat.js" async=""></script>
-
-  
-
-
-
-</body></html>
+</body>
+</html>
