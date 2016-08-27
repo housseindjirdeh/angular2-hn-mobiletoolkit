@@ -63,7 +63,7 @@ export interface Item {
       }
 
       .list-margin {
-        margin-top: 60px;
+        margin-top: 55px;
       }
     }
 
@@ -85,14 +85,14 @@ export interface Item {
     }
 
     .post {
-      padding: 0 0 7px 5px;
+      padding: 0 0 10px 5px;
       transition: background-color 0.2s ease;
     }
 
     @media screen and (max-width: 768px) {
       .post {
         padding: 10px 0 10px 5px;
-        border-bottom: 1px solid #CECECB;
+        border-top: 1px solid #CECECB;
       }
     }
 
@@ -112,6 +112,14 @@ export interface Item {
     .nav {
       padding: 10px 10px 10px 40px;
       margin-top: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav {
+        padding: 0;
+        margin: 30px 0;
+        text-align: center;
+      }
     }
 
     .nav .link {

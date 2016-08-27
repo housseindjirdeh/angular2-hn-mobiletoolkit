@@ -26,7 +26,7 @@ import FooterComponent from './footer/footer.component';
       width: 85%;
       min-height: 80px;
       margin: 0 auto;
-      font-family: 'Open Sans', Verdana, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 15px;
       height: 100%;
     }

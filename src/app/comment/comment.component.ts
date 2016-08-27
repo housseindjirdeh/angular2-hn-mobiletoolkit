@@ -24,8 +24,8 @@ export interface Comment {
     <div *ngIf="!comment$.deleted">
       <div class="meta" [class.meta-collapse]="collapse">
         <span class="collapse" (click)="collapse = !collapse">[{{collapse ? '+' : '-'}}]</span> 
-        <a [routerLink]="['/user', comment$.by]" routerLinkActive="active">{{comment$.by}}</a> 
-        {{ (comment$.time | amFromUnix) | amTimeAgo }}
+        <a [routerLink]="['/user', comment$.by]" routerLinkActive="active">{{comment$.by}}</a>
+        <span class="time">{{ (comment$.time | amFromUnix) | amTimeAgo }}</span>
       </div>
       <div class="comment-tree">
         <div [hidden]="collapse">
@@ -73,6 +73,17 @@ export interface Comment {
       color: #B13138;
     }
 
+    .meta .time {
+      padding-left: 5px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .meta .time {
+        padding: 0;
+        float: right;
+      }
+    }
+
     .meta-collapse {
       margin-bottom: 20px;
     }
@@ -110,14 +121,7 @@ export interface Comment {
       font-size: 14px;
       margin-top: 0;
       word-wrap: break-word;
-    }
-
-    @media screen and (max-width: 768px) {
-      .comment-text {
-        font-size: 13.5px;
-        margin-top: 0;
-        word-wrap: break-word;
-      }
+      line-height: 1.5em;
     }
 
     .subtree {
