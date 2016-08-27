@@ -37,6 +37,12 @@ export interface User {
       padding: 30px;
     }
 
+    @media screen and (max-width: 768px) {
+      .profile {
+        padding: 80px 15px 10px;
+      }
+    }
+
     .main-details .name {
       color: #B13138;
       font-weight: bold; 

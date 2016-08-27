@@ -20,7 +20,7 @@ export interface Item {
       These are jobs at startups that were funded by Y Combinator. 
       You can also get a job at a YC startup through <a href="https://triplebyte.com/?ref=yc_jobs">Triplebyte</a>.
       </p>
-    <ol class="post-list" start="{{ indexFrom + 1 }}">
+    <ol [class.list-margin]="storiesType !== 'jobs'" start="{{ indexFrom + 1 }}">
       <li *ngFor="let item of items$ | async | slice:indexFrom:indexFrom + 30" class="post">
         <item class="item-block" itemID="{{ item }}"></item>
       </li>
@@ -58,9 +58,12 @@ export interface Item {
     @media screen and (max-width: 768px) {
       ol {
         box-sizing: border-box;
-        margin-top: 60px;
         list-style: none;
         padding: 0 10px;
+      }
+
+      .list-margin {
+        margin-top: 60px;
       }
     }
 
@@ -120,6 +123,13 @@ export interface Item {
     .job-header {
       font-size: 15px;
       padding: 0 40px 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .job-header {
+        padding: 60px 15px 25px 15px;
+        border-bottom: 2px dotted #B13138;
+      }
     }
   `],
   directives: [ItemComponent, ROUTER_DIRECTIVES],

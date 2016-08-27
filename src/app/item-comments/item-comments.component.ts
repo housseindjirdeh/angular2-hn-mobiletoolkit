@@ -27,7 +27,7 @@ export interface Item {
   <div *ngIf="item$" class="item">
     <div [class.item-header]="item$.descendants !== 0 && item$.type !== 'job'" [class.head-margin]="item$.text">
       <p *ngIf="item$.url">
-        <a class="title" href="{{item$.url}}" target="_blank">
+        <a class="title" href="{{item$.url}}">
         {{item$.title}}
         </a>
         <span class="domain">{{shortenDomain(item$.url)}}</span>
@@ -80,7 +80,7 @@ export interface Item {
     @media screen and (max-width: 768px) {
       .item {
         box-sizing: border-box;
-        padding: 75px 10px 0 20px;
+        padding: 75px 15px 0 15px;
       }
     }
 

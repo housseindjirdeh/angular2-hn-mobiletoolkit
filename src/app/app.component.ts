@@ -70,10 +70,10 @@ export class AppComponent {
         }
     }
 
-    isMac() {
-        if(navigator.userAgent.indexOf('Mac') > -1) {
-            return true
-        }
-        return false
-    }
+  isMac() {
+      if(navigator.userAgent.indexOf('Mac') > -1) {
+          return true
+      }
+      return false
+  }
 }

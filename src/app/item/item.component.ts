@@ -28,7 +28,7 @@ export interface Item {
   </div>
   <div *ngIf="item$">
     <p *ngIf="item$.url"> 
-      <a class="title" href="{{item$.url}}" target="_blank">
+      <a class="title" href="{{item$.url}}">
         {{item$.title}}
       </a>
       <span class="domain">{{shortenDomain(item$.url)}}</span>
@@ -58,7 +58,10 @@ export interface Item {
       </span> 
     </div>
     <div class="subtext-palm">
-      <div class="details">▲{{item$.score}} by <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a></div>
+      <div class="details" *ngIf="item$.type !== 'job'">
+        <span class="name"> <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a></span>
+        <span class="right">{{item$.score}} ★</span>
+      </div>
       <div class="details">
       {{ (item$.time | amFromUnix) | amTimeAgo }}
       <span *ngIf="item$.type !== 'job'"> • 
@@ -103,9 +106,20 @@ export interface Item {
       color: #828282;
     }
 
+    .subtext-laptop {
+      font-size: 12px;
+    }
+
+    .subtext-palm {
+      font-size: 13px;
+    }
+
+    .upvotes-icon {
+      font-size: 15px;
+    }
+
     .domain,
     .subtext-laptop, .subtext-palm {
-      font-size: 12px;
       color: #828282;
       font-weight: bold;
       letter-spacing: 0.5px;
@@ -126,13 +140,17 @@ export interface Item {
       margin-top: 5px;
     }
 
+    .subtext-palm .details .right {
+      float: right;
+    }
+
     @media screen and (max-width: 768px) {
       .subtext-laptop {
         display: none;
       }
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 769px) {
       .subtext-palm {
         display: none;
       }
