@@ -21,9 +21,10 @@ export interface Item {
   moduleId: module.id,
   selector: 'item',
   template:` 
-  <div class="loading-bars" *ngIf="!item$">
-    <md-progress-bar mode="indeterminate" color="warn" class="long"></md-progress-bar>
-    <md-progress-bar mode="indeterminate" color="warn" class="short"></md-progress-bar>
+  <div class="loading-section" *ngIf="!item$">
+    <div class="loader">
+      Loading...
+    </div>
   </div>
   <div *ngIf="item$">
     <p *ngIf="item$.url"> 
@@ -159,23 +160,113 @@ export interface Item {
       padding: 10px;
     }
 
-    .long {
-      margin: 0px 20px 0;
-      width: 20%;
+    .loader,
+    .loader:before,
+    .loader:after {
+      background: #B92B27;
+      -webkit-animation: load1 1s infinite ease-in-out;
+      animation: load1 1s infinite ease-in-out;
+      width: 1em;
+      height: 4em;
     }
 
-    .short {
-      margin: 8px 20px;
-      width: 10%;
+    .loader:before,
+    .loader:after {
+      position: absolute;
+      top: 0;
+      content: '';
     }
 
-    .loading-bars {
-      margin: -12px 0 0 -20px;
+    .loader:before {
+      left: -1.5em;
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+
+    .loading-section {
+      height: 40px;
     }
 
     @media screen and (max-width: 768px) {
-      .loading-bars {
-        margin: 15px 0 15px -20px;
+      .loading-section {
+        height: 50px;
+      }
+    }
+
+    .loader {
+      color: #B92B27;
+      text-indent: -9999em;
+      margin: 20px 20px;
+      position: relative;
+      font-size: 11px;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+
+    @media screen and (max-width: 768px) {
+      .loader {
+        margin: 20px auto;
+      }
+    }
+
+    .loader:after {
+      left: 1.5em;
+    }
+
+    @-webkit-keyframes load1 {
+      0%,
+      80%,
+      100% {
+        box-shadow: 0 0;
+        height: 2em;
+      }
+      40% {
+        box-shadow: 0 -2em;
+        height: 3em;
+      }
+    }
+
+    @keyframes load1 {
+      0%,
+      80%,
+      100% {
+        box-shadow: 0 0;
+        height: 2em;
+      }
+      40% {
+        box-shadow: 0 -2em;
+        height: 3em;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      @-webkit-keyframes load1 {
+        0%,
+        80%,
+        100% {
+          box-shadow: 0 0;
+          height: 4em;
+        }
+        40% {
+          box-shadow: 0 -2em;
+          height: 5em;
+        }
+      }
+
+      @keyframes load1 {
+        0%,
+        80%,
+        100% {
+          box-shadow: 0 0;
+          height: 3em;
+        }
+        40% {
+          box-shadow: 0 -2em;
+          height: 4em;
+        }
       }
     }
   `],
