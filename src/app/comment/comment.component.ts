@@ -48,7 +48,7 @@ export interface Comment {
   providers: [HackerNewsAPIService],
   styles: [`
     :host >>> a {
-      color: #B13138;
+      color: #b92b27;
       font-weight: bold;
       text-decoration: none;
     }
@@ -63,14 +63,14 @@ export interface Comment {
 
     .meta {
       font-size: 12px;
-      color: #828282;
+      color: #696969;
       font-weight: bold;
       letter-spacing: 0.5px;
       margin-bottom: 8px;
     }
 
     .meta a {
-      color: #B13138;
+      color: #b92b27;
     }
 
     .meta .time {
@@ -90,14 +90,14 @@ export interface Comment {
 
     .deleted-meta {
       font-size: 12px;
-      color: #828282;
+      color: #696969;
       font-weight: bold;
       letter-spacing: 0.5px;
       margin: 30px 0;
     }
 
     .deleted-meta a {
-      color: #B13138;
+      color: #b92b27;
       text-decoration: none;
     }
 

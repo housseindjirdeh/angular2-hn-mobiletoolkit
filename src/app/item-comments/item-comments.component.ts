@@ -103,20 +103,20 @@ export interface Item {
     }
 
     .title:visited {
-      color: #828282;
+      color: #696969;
     }
 
     .domain,
     .subtext {
       font-size: 12px;
-      color: #828282;
+      color: #696969;
       font-weight: bold;
       letter-spacing: 0.5px;
     }
 
     .domain a,
     .subtext a {
-      color: #B13138;
+      color: #b92b27;
     }
 
     .subtext a:hover {
@@ -138,7 +138,7 @@ export interface Item {
     }
 
     .item-header {
-      border-bottom: 2px solid #B13138;
+      border-bottom: 2px solid #b92b27;
       padding-bottom: 10px;
     }
   `],

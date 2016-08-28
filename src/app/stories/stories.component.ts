@@ -26,14 +26,11 @@ export interface Item {
       </li>
     </ol>
     <div class="nav">
-      <a routerLink="/{{ storiesType }}/{{ pageNum - 1 }}" class="link" *ngIf="indexFrom > 0" (click)="scrollTop()">
-        Prev
+      <a routerLink="/{{ storiesType }}/{{ pageNum - 1 }}" *ngIf="indexFrom > 0" (click)="scrollTop()" class="prev">
+        ‹ Prev
       </a>
-      <span class="divider" *ngIf="indexFrom > 0 && (items$ | async)?.length > indexFrom + 30">
-        |
-      </span>
-      <a routerLink="/{{ storiesType }}/{{ pageNum + 1 }}" class="link" *ngIf="(items$ | async)?.length > indexFrom + 30" (click)="scrollTop()">
-        More
+      <a routerLink="/{{ storiesType }}/{{ pageNum + 1 }}" *ngIf="(items$ | async)?.length > indexFrom + 30" (click)="scrollTop()" class="more">
+        More ›
       </a>
     <div>
     <router-outlet></router-outlet>
@@ -41,7 +38,7 @@ export interface Item {
    `,
   styles: [`
     a {
-      color: #B13138;
+      color: #b92b27;
       text-decoration: none;
       font-weight: bold;
     }
@@ -92,7 +89,7 @@ export interface Item {
     @media screen and (max-width: 768px) {
       .post {
         padding: 10px 0 10px 5px;
-        border-top: 1px solid #CECECB;
+        border-bottom: 1px solid #CECECB;
       }
     }
 
@@ -101,7 +98,7 @@ export interface Item {
     }
 
     .post .itemNum {
-      color: #828282;
+      color: #696969;
       position: absolute;
       width: 30px;
       text-align: right;
@@ -110,21 +107,39 @@ export interface Item {
     }
 
     .nav {
-      padding: 10px 10px 10px 40px;
+      padding: 10px 40px;
       margin-top: 10px;
+      font-size: 17px;
+    }
+
+    .nav .prev {
+      padding-right: 20px;
     }
 
     @media screen and (max-width: 768px) {
       .nav {
-        padding: 0;
-        margin: 30px 0;
+        margin: 20px 0;
         text-align: center;
+        padding: 10px 40px;
+      }
+      
+      .nav .prev {
+        float: left;
+        padding-right: 0;
+      }
+
+      .nav .more {
+        float: right;
       }
     }
 
-    .nav .link {
-      color: #000;
-      cursor: pointer;
+    .nav a {
+      color: #B92B27;
+      text-decoration: none;
+    }
+
+    .nav .divider {
+      color: #B92B27;
       text-decoration: none;
     }
 
@@ -136,7 +151,7 @@ export interface Item {
     @media screen and (max-width: 768px) {
       .job-header {
         padding: 60px 15px 25px 15px;
-        border-bottom: 2px dotted #B13138;
+        border-bottom: 2px dotted #b92b27;
       }
     }
   `],

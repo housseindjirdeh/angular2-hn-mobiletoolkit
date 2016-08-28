@@ -44,7 +44,7 @@ export interface User {
     }
 
     .main-details .name {
-      color: #B13138;
+      color: #b92b27;
       font-weight: bold; 
       font-size: 32px;
       letter-spacing: 2px;
@@ -59,13 +59,13 @@ export interface User {
 
     .main-details .age {
       font-weight: bold;
-      color: #828282;
+      color: #696969;
       padding-bottom: 0;
     }
 
     .main-details .right {
       float: right;
-      color: #B13138;
+      color: #b92b27;
       font-weight: bold; 
       font-size: 32px;
       letter-spacing: 2px;

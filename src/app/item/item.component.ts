@@ -103,7 +103,7 @@ export interface Item {
     }
 
     .title:visited {
-      color: #828282;
+      color: #696969;
     }
 
     .subtext-laptop {
@@ -120,7 +120,7 @@ export interface Item {
 
     .domain,
     .subtext-laptop, .subtext-palm {
-      color: #828282;
+      color: #696969;
       font-weight: bold;
       letter-spacing: 0.5px;
     }
@@ -128,7 +128,7 @@ export interface Item {
     .domain a,
     .subtext-laptop a,
     .subtext-palm a {
-      color: #B13138;
+      color: #b92b27;
     }
 
     .subtext-laptop a:hover,

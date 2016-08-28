@@ -13,7 +13,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
         <app-comment commentID="{{ itemID }}"></app-comment>
       </li>
       <div *ngIf="indexFrom < itemKids.length" class="button-block">
-        <button (click)="loadMore()" class="button">Load More</button>
+        <a (click)="loadMore()" class="more-button">More</a>
       </div>
     </ul>
   `,
@@ -27,6 +27,42 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       display: list-item;
     }
 
+    a.more-button {
+      display: inline-block;
+      border-radius: 4px;
+      background-color: #b92b27;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 16px;
+      padding: 10px;
+      width: 130px;
+      transition: all 0.5s;
+      cursor: pointer;
+      margin: 35px 0;
+      vertical-align: middle;
+    }
+
+    a.more-button:hover {
+      background-color: #d43833;
+    }
+
+    @media screen and (max-width: 768px) {
+      a.more-button {
+        color: #fff;
+        width:100%;
+        cursor: pointer;
+        line-height: 2em;
+        padding: 10px 0;
+        display: block;
+        border-radius: 0;
+        position: absolute;
+        left: 0;
+        margin-bottom: 0;
+        margin-top: 5px;
+      }
+    }
+
     .button-block {
       text-align: center;
     }
@@ -34,7 +70,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     .button {
       display: inline-block;
       border-radius: 4px;
-      background-color: #B13138;
+      background-color: #b92b27;
       border: none;
       color: #FFFFFF;
       text-align: center;
@@ -48,7 +84,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     }
 
     .button:hover {
-      background-color: #b8454b;
+      background-color: #d43833;
     }
 
     button:focus {

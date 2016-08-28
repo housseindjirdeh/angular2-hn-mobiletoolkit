@@ -13,12 +13,12 @@ import { Component } from '@angular/core';
 	  position: relative;
 	  padding: 10px;
 	  height: 60px;
-	  border-top: 2px solid #B13138;
+	  border-top: 2px solid #b92b27;
 	  letter-spacing: 0.7px;
 	}
 
 	.footer a {
-	  color: #B13138;
+	  color: #b92b27;
 	  font-weight: bold;
 	  text-decoration: none;
 	}
@@ -26,6 +26,12 @@ import { Component } from '@angular/core';
 	.footer a:hover {
 	  text-decoration: underline;
 	}
+
+	@media screen and (max-width: 768px) {
+      .footer {
+        display: none;
+      }
+    }
   `]
 })
 export default class FooterComponent {

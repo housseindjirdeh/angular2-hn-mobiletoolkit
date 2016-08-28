@@ -51,7 +51,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     }
 
     md-toolbar {
-      background-color: rgb(177, 49, 56);
+      background-color: #b92b27;
       color: #fff;
       padding: 6px;
       line-height: 18px;
@@ -63,7 +63,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     @media screen and (max-width: 768px) {
       md-toolbar {
-        background-color: rgb(177, 49, 56);
+        background-color: #b92b27;
         color: #fff;
         padding: 6px;
         height: 34px;
