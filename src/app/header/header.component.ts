@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MdToolbar } from '@angular2-material/toolbar';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { HackerNewsAPIService } from '../services/hackernews-api.service';
@@ -165,7 +164,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       }
     }
   `],
-  directives: [MdToolbar, ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES]
 })
 export default class HeaderComponent {
   constructor(private _hackerNewsAPIService: HackerNewsAPIService) {}

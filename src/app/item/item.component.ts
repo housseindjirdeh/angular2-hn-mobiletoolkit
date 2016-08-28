@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { MdProgressBar } from '@angular2-material/progress-bar';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { FromUnixPipe, TimeAgoPipe } from 'angular2-moment/src';
 
@@ -180,7 +179,7 @@ export interface Item {
       }
     }
   `],
-  directives: [MdProgressBar, ROUTER_DIRECTIVES]
+  directives: [ROUTER_DIRECTIVES]
 })
 export default class ItemComponent {
   @Input() itemID: number;

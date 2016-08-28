@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MdProgressBar } from '@angular2-material/progress-bar';
 
 @Component({
   moduleId: module.id,
@@ -33,7 +32,6 @@ import { MdProgressBar } from '@angular2-material/progress-bar';
       transform: translate(-50%, -50%);
     }
   `],
-  directives: [MdProgressBar]
 })
 export default class LoadingIndicatorComponent {
 
