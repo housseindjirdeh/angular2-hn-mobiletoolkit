@@ -7,7 +7,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
   moduleId: module.id,
   selector: 'app-header',
   template: `
-  <md-toolbar>
+  <header>
     <div id="header">
       <img class="logo" src="/assets/images/angular2-hn.png">
       <div class="header-text">
@@ -36,11 +36,12 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
         </div>
       </div>
     </div>
-  </md-toolbar>
+  </header>
    `,
   styles: [`
     .logo {
       width: 50px;
+      padding: 3px 8px 0;
     }
 
     @media screen and (max-width: 768px) {
@@ -49,28 +50,23 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       }
     }
 
-    md-toolbar {
+    #header {
       background-color: #b92b27;
       color: #fff;
-      padding: 6px;
+      padding: 6px 0;
       line-height: 18px;
       vertical-align: middle;
       position: relative;
       border-radius: 7px;
       z-index: 1;
+      width: 100%;
     }
 
     @media screen and (max-width: 768px) {
-      md-toolbar {
-        background-color: #b92b27;
-        color: #fff;
-        padding: 6px;
-        height: 34px;
+      #header {
+        height: 50px;
         border-radius: 0;
-        line-height: 18px;
-        vertical-align: middle;
         position: fixed;
-        width: 100%;
       }
     }
 
@@ -95,21 +91,17 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       display: inline;
     }
 
-    #header {
-      width: inherit;
-    }
-
     .header-text {
       position: absolute;
       width: inherit;
       height: 20px;
-      left: 0;
-      top: 28px;
+      left: 10px;
+      top: 25px;
     }
 
     @media screen and (max-width: 768px) {
      .header-text {
-        top: 23px;
+        top: 22px;
       }
     }
 
@@ -122,7 +114,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     @media screen and (max-width: 768px) {
      .left {
         width: 100%;
-        left: 10px;
+        left: 0;
       }
     }
 
@@ -148,7 +140,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     .info {
       position: absolute;
-      right: 10px;
+      right: 20px;
       font-size: 16px;
     }
 

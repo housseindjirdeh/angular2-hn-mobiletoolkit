@@ -120,7 +120,8 @@ export interface Item {
       .nav {
         margin: 20px 0;
         text-align: center;
-        padding: 10px 40px;
+        padding: 10px 80px;
+        height: 20px;
       }
       
       .nav .prev {

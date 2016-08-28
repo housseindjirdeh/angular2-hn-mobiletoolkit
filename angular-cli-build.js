@@ -18,7 +18,6 @@ module.exports = function(defaults) {
       'reflect-metadata/**/*.+(ts|js|js.map)',
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
-      '@angular2-material/**/*.+(js|css|map)',
       'angular2-moment/**/*.+(js|js.map)',
       'moment/**/*.+(js|js.map)'
     ]

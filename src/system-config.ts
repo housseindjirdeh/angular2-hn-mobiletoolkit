@@ -7,21 +7,12 @@
  **********************************************************************************************/
 /** Map relative paths to URLs. */
 const map: any = {
-  '@angular2-material': 'vendor/@angular2-material',
   'angular2-moment': 'vendor/angular2-moment',
   'moment': 'vendor/moment'
 };
 
 /** User packages configuration. */
 const packages: any = {
-  '@angular2-material/toolbar': {
-    defaultExtension: 'js',
-    main: 'toolbar.js'
-  },
-  '@angular2-material/progress-bar': {
-    defaultExtension: 'js',
-    main: 'progress-bar.js'
-  },
   'angular2-moment/src': {
     defaultExtension: 'js',
     main: 'index.js'
