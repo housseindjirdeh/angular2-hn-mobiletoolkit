@@ -9,11 +9,13 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
   template: `
   <header>
     <div id="header">
-      <img class="logo" src="/assets/images/angular2-hn.png">
+      <a class="home-link" routerLink="/news/1" routerLinkActive="active" (click)="scrollTop()">
+        <img class="logo" src="/assets/images/angular2-hn.png">
+      </a>
       <div class="header-text">
         <div class="left">
           <h1 class="name">
-            <a routerLink="/news/1" routerLinkActive="active" (click)="scrollTop()">Angular 2 HN</a>
+            <a routerLink="/news/1" routerLinkActive="active" (click)="scrollTop()" class="app-title">Angular 2 HN</a>
           </h1>
           <span class="header-nav">
             <a routerLink="/newest/1" routerLinkActive="active" (click)="scrollTop()">new</a>
@@ -39,6 +41,11 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
   </header>
    `,
   styles: [`
+    .home-link {
+      width: 50px;
+      height: 66px;
+    }
+
     .logo {
       width: 50px;
       padding: 3px 8px 0;
@@ -46,6 +53,11 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     @media screen and (max-width: 768px) {
       .logo {
+        width: 45px;
+        padding: 0 0 0 10px;
+      }
+
+      .app-title {
         display: none;
       }
     }
