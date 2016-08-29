@@ -102,20 +102,12 @@ export interface Item {
       font-size: 16px;
     }
 
-    .title:visited {
-      color: #696969;
-    }
-
     .subtext-laptop {
       font-size: 12px;
     }
 
     .subtext-palm {
       font-size: 13px;
-    }
-
-    .upvotes-icon {
-      font-size: 15px;
     }
 
     .domain,

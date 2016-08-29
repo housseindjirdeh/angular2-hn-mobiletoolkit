@@ -38,7 +38,7 @@ export interface Item {
         </a>
         <span class="domain">{{shortenDomain(item$.url)}}</span>
       </p>
-      <div class="subtext">
+      <div class="subtext-laptop">
         <span *ngIf="item$.type !== 'job'">
         {{item$.score}} points by 
           <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a>
@@ -56,6 +56,25 @@ export interface Item {
             </a>
           </span>
         </span> 
+      </div>
+      <div class="subtext-palm">
+        <div class="details" *ngIf="item$.type !== 'job'">
+          <span class="name"> <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a></span>
+          <span class="right">{{item$.score}} ★</span>
+        </div>
+        <div class="details">
+          {{ (item$.time | amFromUnix) | amTimeAgo }}
+          <span *ngIf="item$.type !== 'job'"> • 
+            <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
+              <span *ngIf="item$.descendants !== 0">
+                {{item$.descendants}}
+                <span *ngIf="item$.descendants === 1">comment</span>
+                <span *ngIf="item$.descendants > 1">comments</span>
+              </span>
+              <span *ngIf="item$.descendants === 0">discuss</span>
+            </a>
+          </span>
+        </div>
       </div>
     </div>
     <p [innerHTML]="item$.text"></p>
@@ -102,25 +121,50 @@ export interface Item {
       font-size: 16px;
     }
 
-    .title:visited {
-      color: #696969;
+    .subtext-laptop {
+      font-size: 12px;
+    }
+
+    .subtext-palm {
+      font-size: 13px;
     }
 
     .domain,
-    .subtext {
-      font-size: 12px;
+    .subtext-laptop, .subtext-palm {
       color: #696969;
       font-weight: bold;
       letter-spacing: 0.5px;
     }
 
     .domain a,
-    .subtext a {
+    .subtext-laptop a,
+    .subtext-palm a {
       color: #b92b27;
     }
 
-    .subtext a:hover {
+    .subtext-laptop a:hover,
+    .subtext-palm a:hover {
       text-decoration: underline;
+    }
+
+    .subtext-palm .details {
+      margin-top: 5px;
+    }
+
+    .subtext-palm .details .right {
+      float: right;
+    }
+
+    @media screen and (max-width: 768px) {
+      .subtext-laptop {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 769px) {
+      .subtext-palm {
+        display: none;
+      }
     }
 
     .item-details {
