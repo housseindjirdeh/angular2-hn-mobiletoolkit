@@ -18,7 +18,12 @@ export interface Comment {
 @Component({
   moduleId: module.id,
   selector: 'app-comment',
-  template:` 
+  template:`
+  <div class="loading-section" *ngIf="!comment$">
+    <div class="loader">
+      Loading...
+    </div>
+  </div>
   <div *ngIf="comment$">
     <div *ngIf="!comment$.deleted">
       <div class="meta" [class.meta-collapse]="collapse">
@@ -136,6 +141,76 @@ export interface Comment {
     .reply {
       text-decoration: underline;
       font-size: 13px;
+    }
+
+    .loading-section {
+      height: 70px;
+      margin: 40px 0 40px 40px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .loading-section {
+        height: 50px;
+        margin: 0 0 30px 40px
+      }
+    }
+
+    .loader:before,
+    .loader:after,
+    .loader {
+      border-radius: 50%;
+      width: 1.5em;
+      height: 1.5em;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      -webkit-animation: load7 1.8s infinite ease-in-out;
+      animation: load7 1.8s infinite ease-in-out;
+    }
+    .loader {
+      color: #B92B27;
+      font-size: 10px;
+      margin: 20px;
+      position: relative;
+      text-indent: -9999em;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-animation-delay: -0.16s;
+      animation-delay: -0.16s;
+    }
+    .loader:before {
+      left: -3.5em;
+      -webkit-animation-delay: -0.32s;
+      animation-delay: -0.32s;
+    }
+    .loader:after {
+      left: 3.5em;
+    }
+    .loader:before,
+    .loader:after {
+      content: '';
+      position: absolute;
+      top: 0;
+    }
+    @-webkit-keyframes load7 {
+      0%,
+      80%,
+      100% {
+        box-shadow: 0 2.5em 0 -1.3em;
+      }
+      40% {
+        box-shadow: 0 2.5em 0 0;
+      }
+    }
+    @keyframes load7 {
+      0%,
+      80%,
+      100% {
+        box-shadow: 0 2.5em 0 -1.3em;
+      }
+      40% {
+        box-shadow: 0 2.5em 0 0;
+      }
     }
   `],
   directives: [CommentComponent, ROUTER_DIRECTIVES]
