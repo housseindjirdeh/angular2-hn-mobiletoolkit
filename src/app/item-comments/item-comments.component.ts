@@ -125,7 +125,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      padding: 0 75px;
+      padding: 0 50px;
     }
 
     @media screen and (max-width: 768px) {
