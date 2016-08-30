@@ -45,10 +45,10 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
               <span *ngIf="item$.descendants === 0">discuss</span>
             </a>
           </span>
-        </span> 
+        </span>
       </div>
     </div>
-    <a class="item-palm" [routerLink]="['/item', item$.id]" routerLinkActive="active">
+    <div class="item-palm">
       <p *ngIf="item$.url"> 
         <a class="title" href="{{item$.url}}">
           {{item$.title}}
@@ -67,17 +67,17 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
         </div>
         <div class="details">
         {{ (item$.time | amFromUnix) | amTimeAgo }}
-        <span class="comment-number" *ngIf="item$.type !== 'job'"> • 
+        <a [routerLink]="['/item', item$.id]" routerLinkActive="active" class="comment-number" *ngIf="item$.type !== 'job'"> • 
           <span *ngIf="item$.descendants !== 0">
             {{item$.descendants}}
             <span *ngIf="item$.descendants === 1">comment</span>
             <span *ngIf="item$.descendants > 1">comments</span>
           </span>
           <span *ngIf="item$.descendants === 0">discuss</span>
-        </span>
+        </a>
         </div>
       </div>
-    </a>
+    </div>
   </div>
    `,
   pipes: [FromUnixPipe, TimeAgoPipe],

@@ -38,11 +38,12 @@ import FooterComponent from './footer/footer.component';
     @media screen and (max-width: 768px) {
       body {
         margin: 0;
-        background-color: #F6F6EF;
+        background-color: #FCFCFB;
       }
 
       #wrapper {
           width: 100%;
+          background-color: #FCFCFB;
       }
     }
   `],

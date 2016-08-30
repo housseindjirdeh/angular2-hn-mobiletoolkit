@@ -15,11 +15,9 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
   selector: 'app-item-comments',
   template: `
   <div *ngIf="item$" class="item">
-    <div class="mobile" [class.item-header]="item$.descendants !== 0 && item$.type !== 'job'" [class.head-margin]="item$.text">
+    <div class="mobile item-header">
       <p class="title-block">
-        <span class="back-button" (click)="goBack()">
-          ↶
-        </span>
+        <span class="back-button" (click)="goBack()"></span>
         <a *ngIf="item$.url" class="title" href="{{item$.url}}">
           {{item$.title}}
         </a>
@@ -61,7 +59,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
         </span> 
       </div>
     </div>
-    <p [innerHTML]="item$.text"></p>
+    <p class="subject" [innerHTML]="item$.text"></p>
     <app-comment-tree itemKids="{{ item$.kids }}" itemCount="{{ item$.descendants }}"></app-comment-tree>
   </div>
   `,
@@ -93,6 +91,11 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     p {
       margin: 2px 0;
+    }
+
+    .subject {
+      word-wrap: break-word;
+      margin-top: 20px;
     }
 
     a {
@@ -128,17 +131,20 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     @media screen and (max-width: 768px) {
       .title {
         font-size: 15px;
-        margin-right: 10px;
       }
 
       .back-button {
-        color: #b92b27;
-        float: left;
         position: absolute;
-        left: 10px;
-        font-weight: bold;
-        font-size: 18px;
-      }
+        top: 52%;
+        width: 0.6rem;
+        height: 0.6rem;
+        background: transparent;
+        border-top: .3rem solid #B92B27;
+        border-right: .3rem solid #B92B27;
+        box-shadow: 0 0 0 lightgray;
+        transition: all 200ms ease;
+        left: 4%;
+        transform: translate3d(0,-50%,0) rotate(-135deg);
     }
 
     .subtext {
@@ -172,8 +178,8 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     @media screen and (max-width: 768px) {
       .item-header {
+        background-color: #FCFCFB;
         padding: 10px 0 10px 0;
-        background-color: #F6F6EF;
         position: fixed;
         width: 100%;
         left: 0;
