@@ -5,11 +5,8 @@ import { Title }     from '@angular/platform-browser';
 
 import ItemComponent from '../item/item.component';
 
+import { ItemID } from '../interfaces/item';
 import { HackerNewsAPIService } from '../services/hackernews-api.service';
-
-export interface Item {
-  id: number;
-}
 
 @Component({
   moduleId: module.id,
@@ -162,7 +159,7 @@ export interface Item {
 
 export default class StoriesComponent {
   private sub: any;
-  items$: Observable<Item[]>;
+  items$: Observable<ItemID[]>;
   indexFrom: number;
   storiesType: string;
   pageNum: number;

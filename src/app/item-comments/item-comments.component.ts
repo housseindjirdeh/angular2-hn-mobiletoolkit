@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 import { FromUnixPipe, TimeAgoPipe } from 'angular2-moment/src';
@@ -6,26 +7,28 @@ import { Title } from '@angular/platform-browser';
 
 import CommentTreeComponent from '../comment-tree/comment-tree.component';
 
+import { Item } from '../interfaces/item';
 import { HackerNewsAPIService } from '../services/hackernews-api.service';
-
-export interface Item {
-  by: string;
-  descendants: number;
-  id: number;
-  kids: number[];
-  score: number;
-  time: Date;
-  title: string;
-  type: string;
-  url: string;
-}
 
 @Component({
   moduleId: module.id,
   selector: 'app-item-comments',
   template: `
   <div *ngIf="item$" class="item">
-    <div [class.item-header]="item$.descendants !== 0 && item$.type !== 'job'" [class.head-margin]="item$.text">
+    <div class="mobile" [class.item-header]="item$.descendants !== 0 && item$.type !== 'job'" [class.head-margin]="item$.text">
+      <p class="title-block">
+        <span class="back-button" (click)="goBack()">
+          ↶
+        </span>
+        <a *ngIf="item$.url" class="title" href="{{item$.url}}">
+          {{item$.title}}
+        </a>
+        <a *ngIf="!item$.url" class="title" [routerLink]="['/item', item$.id]" routerLinkActive="active">
+          {{item$.title}}
+        </a>
+      </p>
+    </div>
+    <div class="laptop" [class.item-header]="item$.descendants !== 0 && item$.type !== 'job'" [class.head-margin]="item$.text">
       <p *ngIf="item$.url">
         <a class="title" href="{{item$.url}}">
         {{item$.title}}
@@ -38,7 +41,7 @@ export interface Item {
         </a>
         <span class="domain">{{shortenDomain(item$.url)}}</span>
       </p>
-      <div class="subtext-laptop">
+      <div class="subtext">
         <span *ngIf="item$.type !== 'job'">
         {{item$.score}} points by 
           <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a>
@@ -56,25 +59,6 @@ export interface Item {
             </a>
           </span>
         </span> 
-      </div>
-      <div class="subtext-palm">
-        <div class="details" *ngIf="item$.type !== 'job'">
-          <span class="name"> <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a></span>
-          <span class="right">{{item$.score}} ★</span>
-        </div>
-        <div class="details">
-          {{ (item$.time | amFromUnix) | amTimeAgo }}
-          <span *ngIf="item$.type !== 'job'"> • 
-            <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
-              <span *ngIf="item$.descendants !== 0">
-                {{item$.descendants}}
-                <span *ngIf="item$.descendants === 1">comment</span>
-                <span *ngIf="item$.descendants > 1">comments</span>
-              </span>
-              <span *ngIf="item$.descendants === 0">discuss</span>
-            </a>
-          </span>
-        </div>
       </div>
     </div>
     <p [innerHTML]="item$.text"></p>
@@ -99,7 +83,7 @@ export interface Item {
     @media screen and (max-width: 768px) {
       .item {
         box-sizing: border-box;
-        padding: 75px 15px 0 15px;
+        padding: 110px 15px 0 15px;
       }
     }
 
@@ -117,73 +101,84 @@ export interface Item {
       text-decoration: none;
     }
 
+    @media screen and (max-width: 768px) {
+      .laptop {
+        display: none;
+      }
+    }
+
+    @media screen and (min-width: 769px) {
+      .mobile {
+        display: none;
+      }
+    }
+
     .title {
       font-size: 16px;
     }
 
-    .subtext-laptop {
+    .title-block {
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      padding: 0 75px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .title {
+        font-size: 15px;
+        margin-right: 10px;
+      }
+
+      .back-button {
+        color: #b92b27;
+        float: left;
+        position: absolute;
+        left: 10px;
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+
+    .subtext {
       font-size: 12px;
     }
 
-    .subtext-palm {
-      font-size: 13px;
-    }
-
     .domain,
-    .subtext-laptop, .subtext-palm {
+    .subtext {
       color: #696969;
       font-weight: bold;
       letter-spacing: 0.5px;
     }
 
     .domain a,
-    .subtext-laptop a,
-    .subtext-palm a {
+    .subtext a {
       color: #b92b27;
     }
 
-    .subtext-laptop a:hover,
-    .subtext-palm a:hover {
+    .subtext a:hover {
       text-decoration: underline;
-    }
-
-    .subtext-palm .details {
-      margin-top: 5px;
-    }
-
-    .subtext-palm .details .right {
-      float: right;
-    }
-
-    @media screen and (max-width: 768px) {
-      .subtext-laptop {
-        display: none;
-      }
-    }
-
-    @media screen and (min-width: 769px) {
-      .subtext-palm {
-        display: none;
-      }
     }
 
     .item-details {
       padding: 10px;
     }
 
-    .long {
-      margin: 18px 20px 0;
-      width: 20%;
-    }
-
-    .short {
-      margin: 8px 20px;
-      width: 10%;
-    }
-
     .item-header {
       border-bottom: 2px solid #b92b27;
       padding-bottom: 10px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .item-header {
+        padding: 10px 0 10px 0;
+        background-color: #F6F6EF;
+        position: fixed;
+        width: 100%;
+        left: 0;
+        top: 62px;
+      }
     }
   `],
   directives: [CommentTreeComponent, ROUTER_DIRECTIVES]
@@ -195,8 +190,9 @@ export default class ItemCommentsComponent implements OnInit {
   constructor(
     private _hackerNewsAPIService: HackerNewsAPIService,
     private route: ActivatedRoute,
-    private titleService: Title) 
-  {}
+    private titleService: Title,
+    private _location: Location
+  ) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -206,6 +202,10 @@ export default class ItemCommentsComponent implements OnInit {
         this.titleService.setTitle(data.title + ' | Angular 2 HN');
       }, error => console.log('Could not load item'));
     });
+  }
+
+  goBack() {
+    this._location.back();
   }
 
   shortenDomain(url) {

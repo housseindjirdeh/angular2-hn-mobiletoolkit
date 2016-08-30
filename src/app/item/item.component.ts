@@ -3,19 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { FromUnixPipe, TimeAgoPipe } from 'angular2-moment/src';
 
+import { Item } from '../interfaces/item';
 import { HackerNewsAPIService } from '../services/hackernews-api.service';
-
-export interface Item {
-  by: string;
-  descendants: number;
-  id: number;
-  kids: number[];
-  score: number;
-  time: Date;
-  title: string;
-  type: string;
-  url: string;
-}
 
 @Component({
   moduleId: module.id,
@@ -27,55 +16,68 @@ export interface Item {
     </div>
   </div>
   <div *ngIf="item$">
-    <p *ngIf="item$.url"> 
-      <a class="title" href="{{item$.url}}">
-        {{item$.title}}
-      </a>
-      <span class="domain">{{shortenDomain(item$.url)}}</span>
-    </p>
-    <p *ngIf="!item$.url">
-      <a class="title" [routerLink]="['/item', item$.id]" routerLinkActive="active">
-        {{item$.title}}
-      </a>
-    </p>
-    <div class="subtext-laptop">
-      <span *ngIf="item$.type !== 'job'">
-        {{item$.score}} points by 
-        <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a>
-      </span> 
-      <span [class.item-details]="item$.type !== 'job'">
-        {{ (item$.time | amFromUnix) | amTimeAgo }}
-        <span *ngIf="item$.type !== 'job'"> |
-          <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
-            <span *ngIf="item$.descendants !== 0">
-              {{item$.descendants}}
-              <span *ngIf="item$.descendants === 1">comment</span>
-              <span *ngIf="item$.descendants > 1">comments</span>
-            </span>
-            <span *ngIf="item$.descendants === 0">discuss</span>
-          </a>
-        </span>
-      </span> 
-    </div>
-    <div class="subtext-palm">
-      <div class="details" *ngIf="item$.type !== 'job'">
-        <span class="name"> <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a></span>
-        <span class="right">{{item$.score}} ★</span>
+    <div class="item-laptop">
+      <p *ngIf="item$.url"> 
+        <a class="title" href="{{item$.url}}">
+          {{item$.title}}
+        </a>
+        <span class="domain">{{shortenDomain(item$.url)}}</span>
+      </p>
+      <p *ngIf="!item$.url">
+        <a class="title" [routerLink]="['/item', item$.id]" routerLinkActive="active">
+          {{item$.title}}
+        </a>
+      </p>
+      <div class="subtext-laptop">
+        <span *ngIf="item$.type !== 'job'">
+          {{item$.score}} points by 
+          <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a>
+        </span> 
+        <span [class.item-details]="item$.type !== 'job'">
+          {{ (item$.time | amFromUnix) | amTimeAgo }}
+          <span *ngIf="item$.type !== 'job'"> |
+            <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
+              <span *ngIf="item$.descendants !== 0">
+                {{item$.descendants}}
+                <span *ngIf="item$.descendants === 1">comment</span>
+                <span *ngIf="item$.descendants > 1">comments</span>
+              </span>
+              <span *ngIf="item$.descendants === 0">discuss</span>
+            </a>
+          </span>
+        </span> 
       </div>
-      <div class="details">
-      {{ (item$.time | amFromUnix) | amTimeAgo }}
-      <span *ngIf="item$.type !== 'job'"> • 
-        <a [routerLink]="['/item', item$.id]" routerLinkActive="active">
+    </div>
+    <a class="item-palm" [routerLink]="['/item', item$.id]" routerLinkActive="active">
+      <p *ngIf="item$.url"> 
+        <a class="title" href="{{item$.url}}">
+          {{item$.title}}
+        </a>
+        <span class="domain">{{shortenDomain(item$.url)}}</span>
+      </p>
+      <p *ngIf="!item$.url">
+        <a class="title" [routerLink]="['/item', item$.id]" routerLinkActive="active">
+          {{item$.title}}
+        </a>
+      </p>
+      <div class="subtext-palm">
+        <div class="details" *ngIf="item$.type !== 'job'">
+          <span class="name"> <a [routerLink]="['/user', item$.by]" routerLinkActive="active">{{item$.by}}</a></span>
+          <span class="right">{{item$.score}} ★</span>
+        </div>
+        <div class="details">
+        {{ (item$.time | amFromUnix) | amTimeAgo }}
+        <span class="comment-number" *ngIf="item$.type !== 'job'"> • 
           <span *ngIf="item$.descendants !== 0">
             {{item$.descendants}}
             <span *ngIf="item$.descendants === 1">comment</span>
             <span *ngIf="item$.descendants > 1">comments</span>
           </span>
           <span *ngIf="item$.descendants === 0">discuss</span>
-        </a>
-      </span>
+        </span>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
    `,
   pipes: [FromUnixPipe, TimeAgoPipe],
@@ -119,7 +121,8 @@ export interface Item {
 
     .domain a,
     .subtext-laptop a,
-    .subtext-palm a {
+    .subtext-palm a,
+    .subtext-palm .comment-number {
       color: #b92b27;
     }
 
@@ -137,13 +140,13 @@ export interface Item {
     }
 
     @media screen and (max-width: 768px) {
-      .subtext-laptop {
+      .item-laptop {
         display: none;
       }
     }
 
     @media screen and (min-width: 769px) {
-      .subtext-palm {
+      .item-palm {
         display: none;
       }
     }

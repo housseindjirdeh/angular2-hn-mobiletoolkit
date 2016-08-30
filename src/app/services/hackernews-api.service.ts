@@ -4,22 +4,20 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
-export interface Item {
-  id: number;
-}
+import { ItemID } from '../interfaces/item';
 
 @Injectable()
 export class HackerNewsAPIService {
-	private _items$: Subject<Item[]>;
+	private _items$: Subject<ItemID[]>;
 	private baseUrl: string;
 	private dataStore: {
-		items: Item[]
+		items: ItemID[]
 	};
 
 	constructor(private http: Http) {
 		this.baseUrl = 'https://hacker-news.firebaseio.com/v0';
 		this.dataStore = {items: []};
-		this._items$ = < Subject < Item[] >> new Subject();
+		this._items$ = <Subject<ItemID[]>> new Subject();
 	}
 
 	get items$() {

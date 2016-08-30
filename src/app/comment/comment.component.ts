@@ -3,17 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { FromUnixPipe, TimeAgoPipe } from 'angular2-moment/src';
 
+import { Comment } from '../interfaces/comment';
 import { HackerNewsAPIService } from '../services/hackernews-api.service';
-
-export interface Comment {
-  by: string;
-  id: number;
-  kids: number[];
-  parent: number;
-  text: string;
-  time: Date;
-  type: string;
-}
 
 @Component({
   moduleId: module.id,
@@ -34,7 +25,6 @@ export interface Comment {
       <div class="comment-tree">
         <div [hidden]="collapse">
           <p class="comment-text" [innerHTML]="comment$.text"></p>
-          <p><a class="reply" href="https://news.ycombinator.com/reply?id={{comment$.id}}">reply</a></p>
           <div class="subtree" *ngFor="let kidId of comment$.kids">
             <app-comment commentID="{{ kidId }}"></app-comment>
           </div>
@@ -124,6 +114,7 @@ export interface Comment {
     .comment-text {
       font-size: 14px;
       margin-top: 0;
+      margin-bottom: 20px;
       word-wrap: break-word;
       line-height: 1.5em;
     }
@@ -136,11 +127,6 @@ export interface Comment {
       .subtree {
         margin-left: 10px;
       }
-    }
-
-    .reply {
-      text-decoration: underline;
-      font-size: 13px;
     }
 
     .loading-section {

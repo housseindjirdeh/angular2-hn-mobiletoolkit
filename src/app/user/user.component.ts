@@ -4,16 +4,8 @@ import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 import { FromUnixPipe, TimeAgoPipe } from 'angular2-moment/src';
 import { Title } from '@angular/platform-browser';
 
+import { User } from '../interfaces/user';
 import { HackerNewsAPIService } from '../services/hackernews-api.service';
-
-export interface User {
-  about: string;
-  created: Date;
-  delay: number;
-  id: string;
-  karma: number;
-  submitted: number[];
-}
 
 @Component({
   moduleId: module.id,
