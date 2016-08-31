@@ -18,7 +18,7 @@ Link to Application
 
 ## Really? Just another Hacker News client?
 
-Not really. I wanted to build an application that would look and feel native on any device you use. I thought that building a Hacker News client this way will be pretty cool.
+Not really. I wanted to build an app that would look and feel native on any device you use. I thought that building a Hacker News client this way will be pretty cool.
 
 I did this by using [Angular Mobile Toolkit](https://mobile.angular.io/), the mobile integration of [Angular CLI](https://cli.angular.io/) that allows for building progressive web applications.
 
@@ -32,7 +32,7 @@ I did this by using [Angular Mobile Toolkit](https://mobile.angular.io/), the mo
   + User profiles
  + Application Manifest to allow you to easily install to the home screen of your mobile device where it will launch just like an app, without any browser UI 
  + Completely responsive UI that provides a native feel regardless of which device you use
- + Service Worker script that caches application data for fast loading. Pages visited previously will work without an internet connection
+ + Service Worker script that caches assets and application data. Pages visited previously will work without an internet connection
   + *Note: Offline capability currently only works in Firefox. Chrome offline functionality will be released in the near future*
 
 ## Installing to your home screen
