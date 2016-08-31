@@ -1,5 +1,5 @@
 .app-loader {
-	  display: flex;
+	display: flex;
   	align-items: center;
   	justify-content: center;
     opacity: 0;
@@ -13,7 +13,7 @@
 
 @media screen and (max-width: 768px) {
   .app-loader {
-    background-color: #f6f6ef;
+    background-color: #FCFCFB;
   }
 }
 

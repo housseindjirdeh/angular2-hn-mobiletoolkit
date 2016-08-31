@@ -16,7 +16,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     <div class="mobile item-header">
       <p class="title-block">
         <span class="back-button" (click)="goBack()"></span>
-        {{user$.id}}
+        Profile
       </p>
     </div>
     <div class="main-details">
@@ -32,6 +32,10 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
   pipes: [FromUnixPipe, TimeAgoPipe],
   providers: [HackerNewsAPIService, Title],
   styles: [`
+    :host >>> pre {
+      white-space: pre-wrap;
+    }
+
     .profile {
       padding: 30px;
     }

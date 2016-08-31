@@ -145,6 +145,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
         transition: all 200ms ease;
         left: 4%;
         transform: translate3d(0,-50%,0) rotate(-135deg);
+      }
     }
 
     .subtext {
