@@ -1,14 +1,16 @@
-# Angular 2 HN
+# Angular 2 HN <img src="public/assets/images/angular2-hn.png" width = 40 style="position: absolute; padding-left: 20px;">
 
-<img src="public/assets/images/angular2-hn.png" width = 50> A progressive Hacker News client built with [Angular 2](https://angular.io/) and [RxJS](http://reactivex.io/) using it's [Firebase API](https://github.com/HackerNews/API).
+A progressive Hacker News client built with [Angular 2](https://angular.io/) and [RxJS](http://reactivex.io/) using it's [Firebase API](https://github.com/HackerNews/API).
 
 Link to Application
 
--- mobile gif
+[Mobile Demo](http://i.imgur.com/ooQoI4H.gifv)
 
-## Really? Another Hacker News client?
+## Really? Just another Hacker News client?
 
-I built this application using [Angular Mobile Toolkit](https://mobile.angular.io/), the mobile integration of [Angular CLI](https://cli.angular.io/) that allows for progressive web applications. 
+Not really. I wanted to build an application that would look and feel native on any device you use. I thought that building a Hacker News client this way will be pretty cool.
+
+I did this by using [Angular Mobile Toolkit](https://mobile.angular.io/), the mobile integration of [Angular CLI](https://cli.angular.io/) that allows for building progressive web applications.
 
 ## Features
 
@@ -35,9 +37,9 @@ I built this application using [Angular Mobile Toolkit](https://mobile.angular.i
  - Clone or download the repo
  - If you don't have Angular CLI installed: `npm install -g angular-cli`
  - `ng init --mobile`
- - `n` to not overwrite any file changes
+ - Input `n` for each file to not overwrite any file changes
  - `ng serve` 
 
 This will kick off the server at `http://localhost:4200/`. Any changes you do to the source files will automatically reload the app.
 
-Click here to see a full list of what you can do with [Angular CLI](https://cli.angular.io/)
+Click [here](https://cli.angular.io/) to see a full list of what you can do with Angular CLI.
