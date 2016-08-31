@@ -1,6 +1,6 @@
-# Angular 2 HN <img src="public/assets/images/angular2-hn.png" width = 40>
+<img alt="Angular 2 HN" title="Angular 2 HN" src="http://i.imgur.com/92Lll7T.png" width="500">
 
-A progressive Hacker News client built with [Angular 2](https://angular.io/) and [RxJS](http://reactivex.io/) using it's [Firebase API](https://github.com/HackerNews/API).
+**A progressive Hacker News client built with [Angular 2](https://angular.io/) and [RxJS](http://reactivex.io/) using it's [Firebase API](https://github.com/HackerNews/API).**
 
 [Live Version](https://angular2-hn.firebaseapp.com)
 
@@ -13,12 +13,12 @@ A progressive Hacker News client built with [Angular 2](https://angular.io/) and
 ## Laptop Preview
 
 <p align="center">
-  <img src = "http://i.imgur.com/ANsQU93.gif">
+  <img src = "http://i.imgur.com/9LqdfB23.gif">
 </p>
 
-## Really? Just another Hacker News client?
+## Another Hacker News client?
 
-Yeah I know, there are a [ton](https://github.com/cheeaun/awesome-hacker-news) of Hacker News readers and clients out there. I wanted to play around with [Angular Mobile Toolkit](https://mobile.angular.io/) to build an app that would look native on any device you use ,so I thought that building a Hacker News client this way will be pretty cool. 
+Yeah I know, there are [a ton](https://github.com/cheeaun/awesome-hacker-news) of Hacker News readers out there. I wanted to play around with [Angular Mobile Toolkit](https://mobile.angular.io/) to build an app that would look native on any device you use, so Hacker News it is :smile:. 
 
 ## Features
 
@@ -39,7 +39,7 @@ This was just a fun side project I spent a few weeks on. It's far from perfect a
  - Service worker script fails to retrieve cached network calls in Chrome when offline
  - Support for polls
 
- Feel free to [send me feedback on twitter](https://twitter.com/hdjirdeh) or [file an issue](https://github.com/hdjirdeh/angular2-hn/issues/new)!
+Feel free to send me feedback on [twitter](https://twitter.com/hdjirdeh) or [file an issue](https://github.com/hdjirdeh/angular2-hn/issues/new)!
 
 ## Build process
 
