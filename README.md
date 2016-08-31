@@ -5,7 +5,16 @@ A progressive Hacker News client built with [Angular 2](https://angular.io/) and
 Link to Application
 
 ## App Preview
-![iOS Preview Gif](http://i.imgur.com/ooQoI4H.gif "iOS Preview Gif")
+
+<p align="center">
+  <img src = "http://i.imgur.com/ooQoI4H.gif">
+</p>
+
+## Laptop Preview
+
+<p align="center">
+  <img src = "http://i.imgur.com/ooQoI4H.gif">
+</p>
 
 ## Really? Just another Hacker News client?
 
