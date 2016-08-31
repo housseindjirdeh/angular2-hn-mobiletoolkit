@@ -20,7 +20,7 @@ import { Component } from '@angular/core';
 
     @media screen and (max-width: 768px) {
       .loading-image {
-        background-color: #FCFCFB;
+        background-color: #fff;
       }
     }
 

@@ -56,7 +56,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     }
 
     .meta {
-      font-size: 12px;
+      font-size: 13px;
       color: #696969;
       font-weight: bold;
       letter-spacing: 0.5px;
@@ -72,6 +72,11 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
     }
 
     @media screen and (max-width: 768px) {
+      .meta {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
       .meta .time {
         padding: 0;
         float: right;
@@ -125,7 +130,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     @media screen and (max-width: 768px) {
       .subtree {
-        margin-left: 10px;
+        margin-left: 5px;
       }
     }
 

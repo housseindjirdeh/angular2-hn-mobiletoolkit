@@ -71,7 +71,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
       .item-header {
         border-bottom: 2px solid #b92b27;
         padding-bottom: 10px;
-        background-color: #FCFCFB;
+        background-color: #fff;
         padding: 10px 0 10px 0;
         position: fixed;
         width: 100%;

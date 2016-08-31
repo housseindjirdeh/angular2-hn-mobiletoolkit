@@ -179,7 +179,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     @media screen and (max-width: 768px) {
       .item-header {
-        background-color: #FCFCFB;
+        background-color: #fff;
         padding: 10px 0 10px 0;
         position: fixed;
         width: 100%;
