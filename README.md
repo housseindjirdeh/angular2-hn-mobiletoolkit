@@ -4,7 +4,8 @@ A progressive Hacker News client built with [Angular 2](https://angular.io/) and
 
 Link to Application
 
-[Mobile Demo](http://i.imgur.com/ooQoI4H.gifv)
+## App Preview
+![iOS Preview Gif](http://i.imgur.com/ooQoI4H.gif "iOS Preview Gif")
 
 ## Really? Just another Hacker News client?
 
