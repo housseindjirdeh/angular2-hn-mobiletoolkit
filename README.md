@@ -1,46 +1,45 @@
-# Angular 2 HN <img src="public/assets/images/angular2-hn.png" width = 40 style="position: absolute; padding-left: 20px;">
+# Angular 2 HN <img src="public/assets/images/angular2-hn.png" width = 40>
 
 A progressive Hacker News client built with [Angular 2](https://angular.io/) and [RxJS](http://reactivex.io/) using it's [Firebase API](https://github.com/HackerNews/API).
 
-Link to Application
+[Live Version](https://angular2-hn.firebaseapp.com)
 
-## App Preview
+## Mobile Preview
 
 <p align="center">
-  <img src = "http://i.imgur.com/ooQoI4H.gif">
+  <img src = "http://i.imgur.com/46BnTDt.gif">
 </p>
 
 ## Laptop Preview
 
 <p align="center">
-  <img src = "http://i.imgur.com/ooQoI4H.gif">
+  <img src = "http://i.imgur.com/ANsQU93.gif">
 </p>
 
 ## Really? Just another Hacker News client?
 
-Not really. I wanted to build an app that would look and feel native on any device you use. I thought that building a Hacker News client this way will be pretty cool.
-
-I did this by using [Angular Mobile Toolkit](https://mobile.angular.io/), the mobile integration of [Angular CLI](https://cli.angular.io/) that allows for building progressive web applications.
+Yeah I know, there are a [ton](https://github.com/cheeaun/awesome-hacker-news) of Hacker News readers and clients out there. I wanted to play around with [Angular Mobile Toolkit](https://mobile.angular.io/) to build an app that would look native on any device you use ,so I thought that building a Hacker News client this way will be pretty cool. 
 
 ## Features
 
  + Supports display of; 
-  + Stories
-  + Jobs
-  + Polls
-  + Comments
-  + User profiles
- + Application Manifest to allow you to easily install to the home screen of your mobile device where it will launch just like an app, without any browser UI 
+  + [Stories](https://angular2-hn.firebaseapp.com/item/12398451)
+  + [Jobs](https://angular2-hn.firebaseapp.com/item/12366966)
+  + [User profiles](https://angular2-hn.firebaseapp.com/user/dhouston)
  + Completely responsive UI that provides a native feel regardless of which device you use
+ + Application Manifest to allow you to easily install to the home screen of your mobile device where it will launch just like an app, without any browser UI 
  + Service Worker script that caches assets and application data. Pages visited previously will work without an internet connection
   + *Note: Offline capability currently only works in Firefox. Chrome offline functionality will be released in the near future*
 
-## Installing to your home screen
+## Areas of improvement
 
- - **Chrome on Android:** Select "Add to Home Screen" from the menu. You can also see a prompt to install to home screen when you ...
- - **Safari on iOS:** Select "Add to Home Screen" from the menu.
- - **Firefox on Android:** Select the menu, tap on Page then click on "Add to Home Screen".
- - **Opera on Android:** Tap the plus sign on the left of the address bar and select "Add to Home Screen"
+This was just a fun side project I spent a few weeks on. It's far from perfect and there are areas that definitely need to be improved upon.
+
+ - Comment requests stagger and take a while with a large number of comments (>200). This needs to be sped up considerably
+ - Service worker script fails to retrieve cached network calls in Chrome when offline
+ - Support for polls
+
+ Feel free to [send me feedback on twitter](https://twitter.com/hdjirdeh) or [file an issue](https://github.com/hdjirdeh/angular2-hn/issues/new)!
 
 ## Build process
 
@@ -48,7 +47,7 @@ I did this by using [Angular Mobile Toolkit](https://mobile.angular.io/), the mo
  - If you don't have Angular CLI installed: `npm install -g angular-cli`
  - `ng init --mobile`
  - Input `n` for each file to not overwrite any file changes
- - `ng serve` 
+ - `ng serve`
 
 This will kick off the server at `http://localhost:4200/`. Any changes you do to the source files will automatically reload the app.
 
