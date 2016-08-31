@@ -1,33 +1,43 @@
-# AngularHn
+# Angular 2 HN
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.9.
+<img src="public/assets/images/angular2-hn.png" width = 50> A progressive Hacker News client built with [Angular 2](https://angular.io/) and [RxJS](http://reactivex.io/) using it's [Firebase API](https://github.com/HackerNews/API).
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Link to Application
 
-## Code scaffolding
+-- mobile gif
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/route/class`.
+## Really? Another Hacker News client?
 
-## Build
+I built this application using [Angular Mobile Toolkit](https://mobile.angular.io/), the mobile integration of [Angular CLI](https://cli.angular.io/) that allows for progressive web applications. 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## Features
 
-## Running unit tests
+ + Supports display of; 
+  + Stories
+  + Jobs
+  + Polls
+  + Comments
+  + User profiles
+ + Application Manifest to allow you to easily install to the home screen of your mobile device where it will launch just like an app, without any browser UI 
+ + Completely responsive UI that provides a native feel regardless of which device you use
+ + Service Worker script that caches application data for fast loading. Pages visited previously will work without an internet connection
+  + *Note: Offline capability currently only works in Firefox. Chrome offline functionality will be released in the near future*
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Installing to your home screen
 
-## Running end-to-end tests
+ - **Chrome on Android:** Select "Add to Home Screen" from the menu. You can also see a prompt to install to home screen when you ...
+ - **Safari on iOS:** Select "Add to Home Screen" from the menu.
+ - **Firefox on Android:** Select the menu, tap on Page then click on "Add to Home Screen".
+ - **Opera on Android:** Tap the plus sign on the left of the address bar and select "Add to Home Screen"
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `ng serve`.
+## Build process
 
-## Deploying to Github Pages
+ - Clone or download the repo
+ - If you don't have Angular CLI installed: `npm install -g angular-cli`
+ - `ng init --mobile`
+ - `n` to not overwrite any file changes
+ - `ng serve` 
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
+This will kick off the server at `http://localhost:4200/`. Any changes you do to the source files will automatically reload the app.
 
-## Further help
-
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-=======
-# angular2-hackernews
+Click here to see a full list of what you can do with [Angular CLI](https://cli.angular.io/)
