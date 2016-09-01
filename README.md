@@ -13,12 +13,8 @@
 ## Laptop Preview
 
 <p align="center">
-  <img src = "http://i.imgur.com/9LqdfB23.gif">
+  <img src = "http://i.imgur.com/6QquRtl.gif">
 </p>
-
-## Another Hacker News client?
-
-Yeah I know, there are [a ton](https://github.com/cheeaun/awesome-hacker-news) of Hacker News readers out there. I wanted to play around with [Angular Mobile Toolkit](https://mobile.angular.io/) to build an app that would look native on any device you use, so Hacker News it is :smile:. 
 
 ## Features
 
@@ -31,9 +27,11 @@ Yeah I know, there are [a ton](https://github.com/cheeaun/awesome-hacker-news) o
  + Service Worker script that caches assets and application data. Pages visited previously will work without an internet connection
   + *Note: Offline capability currently only works in Firefox. Chrome offline functionality will be released in the near future*
 
-## Areas of improvement
+## Another Hacker News client?
 
-This was just a fun side project I spent a few weeks on. It's far from perfect and there are areas that definitely need to be improved upon.
+Yeah I know, there are [a ton](https://github.com/cheeaun/awesome-hacker-news) of Hacker News readers out there. I wanted to play around with [Angular Mobile Toolkit](https://mobile.angular.io/) to build an app that would look native on any device you use, so I thought Hacker News would make a good reference app :smile:.
+
+## Areas of improvement
 
  - Comment requests stagger and take a while with a large number of comments (>200). This needs to be sped up considerably
  - Service worker script fails to retrieve cached network calls in Chrome when offline
