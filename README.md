@@ -47,8 +47,8 @@ Feel free to send me feedback on [twitter](https://twitter.com/hdjirdeh) or [fil
  - Input `n` for each file to not overwrite any file changes
  - Delete/comment out `app.component.spec.ts`
  - `ng serve`
+ - `ng serve --prod` will kick off a production build with uglifying and tree-shaking
 
 This will kick off the server at `http://localhost:4200/`. Any changes you do to the source files will automatically reload the app.
-
 
 Click [here](https://cli.angular.io/) to see a full list of what you can do with Angular CLI.
