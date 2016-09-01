@@ -97,6 +97,7 @@ import { HackerNewsAPIService } from '../services/hackernews-api.service';
 
     .name {
       margin-right: 30px;
+      margin-bottom: 2px;
     }
 
     a {
