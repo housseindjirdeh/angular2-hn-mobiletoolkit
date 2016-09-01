@@ -18,18 +18,18 @@
 
 ## Features
 
- + Supports display of; 
+ + Supports display of:
   + [Stories](https://angular2-hn.firebaseapp.com/item/12398451)
   + [Jobs](https://angular2-hn.firebaseapp.com/item/12366966)
   + [User profiles](https://angular2-hn.firebaseapp.com/user/dhouston)
  + Completely responsive UI that provides a native feel regardless of which device you use
- + Application Manifest to allow you to easily install to the home screen of your mobile device where it will launch just like an app, without any browser UI 
+ + Application Manifest to allow you to easily install to the home screen of your mobile device where it will launch just like an app without any browser UI 
  + Service Worker script that caches assets and application data. Pages visited previously will work without an internet connection
   + *Note: Offline capability currently only works in Firefox. Chrome offline functionality will be released in the near future*
 
 ## Another Hacker News client?
 
-Yeah I know, there are [a ton](https://github.com/cheeaun/awesome-hacker-news) of Hacker News readers out there. I wanted to play around with [Angular Mobile Toolkit](https://mobile.angular.io/) to build an app that would look native on any device you use, so I thought Hacker News would make a good reference app :smile:.
+Yeah I know, there are [a ton](https://github.com/cheeaun/awesome-hacker-news) of Hacker News readers out there. I wanted to play around with [Angular Mobile Toolkit](https://mobile.angular.io/) to build an app that would look native on any device you use, so I thought it would be fun to build Hacker News :smile:.
 
 ## Areas of improvement
 
@@ -45,7 +45,9 @@ Feel free to send me feedback on [twitter](https://twitter.com/hdjirdeh) or [fil
  - If you don't have Angular CLI installed: `npm install -g angular-cli`
  - `ng init --mobile`
  - Input `n` for each file to not overwrite any file changes
+ - Delete/comment out `app.component.spec.ts`
  - `ng serve`
+ - `ng serve --prod` will kick off a production build with uglifying and tree-shaking
 
 This will kick off the server at `http://localhost:4200/`. Any changes you do to the source files will automatically reload the app.
 
